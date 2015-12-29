@@ -1,0 +1,462 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BUFSIZE	Examples/reed_sol_test_gf.c	/^#define BUFSIZE /;"	d	file:
+Blaum_Roth	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Blaum_Roth	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Cauchy_Good	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Cauchy_Good	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Cauchy_Orig	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Cauchy_Orig	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Coding_Technique	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	g	file:
+Coding_Technique	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	g	file:
+CreateProcess	ltmain.sh	/^   CreateProcess().  We must quote the arguments since Win32 CreateProcess()$/;"	f
+EVENODD	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+EVENODD	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+GF08	src/reed_sol.c	/^static gf_t GF08;$/;"	v	file:
+GF16	src/reed_sol.c	/^static gf_t GF16;$/;"	v	file:
+GF32	src/reed_sol.c	/^static gf_t GF32;$/;"	v	file:
+Liber8tion	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Liber8tion	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Liberation	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Liberation	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+MAX_GF_INSTANCES	src/galois.c	/^#define MAX_GF_INSTANCES /;"	d	file:
+Methods	Examples/decoder.c	/^char *Methods[N] = {"reed_sol_van", "reed_sol_r6_op", "cauchy_orig", "cauchy_good", "liberation", "blaum_roth", "liber8tion", "rdp", "evenodd", "no_coding"};$/;"	v
+Methods	Examples/encoder.c	/^char *Methods[N] = {"reed_sol_van", "reed_sol_r6_op", "cauchy_orig", "cauchy_good", "liberation", "blaum_roth", "liber8tion", "no_coding"};$/;"	v
+N	Examples/decoder.c	/^#define N /;"	d	file:
+N	Examples/encoder.c	/^#define N /;"	d	file:
+NOs	src/cauchy.c	/^static int NOs[33];$/;"	v	file:
+NOs	src/cauchy_best_r6.c	/^static int NOs[33];$/;"	v	file:
+No_Coding	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+No_Coding	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+ONEs	src/cauchy.c	/^static int ONEs[33][33];$/;"	v	file:
+ONEs	src/cauchy_best_r6.c	/^static int ONEs[33][33];$/;"	v	file:
+PPs	src/cauchy.c	/^static int PPs[33] = { -1, -1, -1, -1, -1, -1, -1, -1,$/;"	v	file:
+PPs	src/cauchy_best_r6.c	/^static int PPs[33] = { -1, -1, -1, -1, -1, -1, -1, -1,$/;"	v	file:
+RDP	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+RDP	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Reed_Sol_R6_Op	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Reed_Sol_R6_Op	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Reed_Sol_Van	Examples/decoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+Reed_Sol_Van	Examples/encoder.c	/^enum Coding_Technique {Reed_Sol_Van, Reed_Sol_R6_Op, Cauchy_Orig, Cauchy_Good, Liberation, Blaum_Roth, Liber8tion, RDP, EVENODD, No_Coding};$/;"	e	enum:Coding_Technique	file:
+_GALOIS_H	include/galois.h	/^#define _GALOIS_H$/;"	d
+_JERASURE_H	include/jerasure.h	/^#define _JERASURE_H$/;"	d
+ac_fn_c_check_func	configure	/^ac_fn_c_check_func ()$/;"	f
+ac_fn_c_check_header_compile	configure	/^ac_fn_c_check_header_compile ()$/;"	f
+ac_fn_c_check_header_mongrel	configure	/^ac_fn_c_check_header_mongrel ()$/;"	f
+ac_fn_c_try_compile	configure	/^ac_fn_c_try_compile ()$/;"	f
+ac_fn_c_try_cpp	configure	/^ac_fn_c_try_cpp ()$/;"	f
+ac_fn_c_try_link	configure	/^ac_fn_c_try_link ()$/;"	f
+ac_fn_c_try_run	configure	/^ac_fn_c_try_run ()$/;"	f
+as_fn_append	configure	/^  as_fn_append ()$/;"	f
+as_fn_arith	configure	/^  as_fn_arith ()$/;"	f
+as_fn_error	configure	/^as_fn_error ()$/;"	f
+as_fn_exit	configure	/^as_fn_exit ()$/;"	f
+as_fn_failure	configure	/^as_fn_failure () { as_fn_return 1; }$/;"	f
+as_fn_mkdir_p	configure	/^as_fn_mkdir_p ()$/;"	f
+as_fn_ret_failure	configure	/^as_fn_ret_failure () { return 1; }$/;"	f
+as_fn_ret_success	configure	/^as_fn_ret_success () { return 0; }$/;"	f
+as_fn_set_status	configure	/^as_fn_set_status ()$/;"	f
+as_fn_success	configure	/^as_fn_success () { as_fn_return 0; }$/;"	f
+as_fn_unset	configure	/^as_fn_unset ()$/;"	f
+blaum_roth_coding_bitmatrix	src/liberation.c	/^int *blaum_roth_coding_bitmatrix(int k, int w)$/;"	f
+cauchy_good_general_coding_matrix	src/cauchy.c	/^int *cauchy_good_general_coding_matrix(int k, int m, int w)$/;"	f
+cauchy_good_general_coding_matrix	src/cauchy_best_r6.c	/^int *cauchy_good_general_coding_matrix(int k, int m, int w)$/;"	f
+cauchy_improve_coding_matrix	src/cauchy.c	/^void cauchy_improve_coding_matrix(int k, int m, int w, int *matrix)$/;"	f
+cauchy_improve_coding_matrix	src/cauchy_best_r6.c	/^void cauchy_improve_coding_matrix(int k, int m, int w, int *matrix)$/;"	f
+cauchy_n_ones	src/cauchy.c	/^int cauchy_n_ones(int n, int w)$/;"	f
+cauchy_n_ones	src/cauchy_best_r6.c	/^int cauchy_n_ones(int n, int w)$/;"	f
+cauchy_original_coding_matrix	src/cauchy.c	/^int *cauchy_original_coding_matrix(int k, int m, int w)$/;"	f
+cauchy_original_coding_matrix	src/cauchy_best_r6.c	/^int *cauchy_original_coding_matrix(int k, int m, int w)$/;"	f
+cauchy_xy_coding_matrix	src/cauchy.c	/^int *cauchy_xy_coding_matrix(int k, int m, int w, int *X, int *Y)$/;"	f
+cauchy_xy_coding_matrix	src/cauchy_best_r6.c	/^int *cauchy_xy_coding_matrix(int k, int m, int w, int *X, int *Y)$/;"	f
+cbest_0	src/cauchy.c	/^static int *cbest_0;$/;"	v	file:
+cbest_0	src/cauchy_best_r6.c	/^static int *cbest_0;$/;"	v	file:
+cbest_1	src/cauchy.c	/^static int *cbest_1;$/;"	v	file:
+cbest_1	src/cauchy_best_r6.c	/^static int *cbest_1;$/;"	v	file:
+cbest_10	src/cauchy.c	/^static int cbest_10[1023] = { 1, 2, 516, 4, 258, 8, 129, 16, 32, 580, 64, 128, 290, 145, 256, 3, 512,$/;"	v	file:
+cbest_10	src/cauchy.c	/^static int cbest_10[1023];$/;"	v	file:
+cbest_10	src/cauchy_best_r6.c	/^static int cbest_10[1023] = { 1, 2, 516, 4, 258, 8, 129, 16, 32, 580, 64, 128, 290, 145, 256, 3, 512,$/;"	v	file:
+cbest_10	src/cauchy_best_r6.c	/^static int cbest_10[1023];$/;"	v	file:
+cbest_11	src/cauchy.c	/^static int cbest_11[1023] = { 1,$/;"	v	file:
+cbest_11	src/cauchy.c	/^static int cbest_11[1023];$/;"	v	file:
+cbest_11	src/cauchy_best_r6.c	/^static int cbest_11[1023] = { 1,$/;"	v	file:
+cbest_11	src/cauchy_best_r6.c	/^static int cbest_11[1023]; $/;"	v	file:
+cbest_12	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_12	src/cauchy_best_r6.c	/^static int cbest_12[1023] = {$/;"	v	file:
+cbest_12	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_13	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_13	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_13	src/cauchy_best_r6.c	/^static int cbest_13[1023] = {$/;"	v	file:
+cbest_14	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_14	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_14	src/cauchy_best_r6.c	/^static int cbest_14[1023] = {$/;"	v	file:
+cbest_15	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_15	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_15	src/cauchy_best_r6.c	/^static int cbest_15[1023] = {$/;"	v	file:
+cbest_16	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_16	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_16	src/cauchy_best_r6.c	/^static int cbest_16[1023] = {$/;"	v	file:
+cbest_17	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_17	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_17	src/cauchy_best_r6.c	/^static int cbest_17[1023] = {$/;"	v	file:
+cbest_18	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_18	src/cauchy_best_r6.c	/^static int cbest_12[1023], cbest_13[1023], cbest_14[1023], cbest_15[1023], cbest_16[1023], cbest_17[1023], cbest_18[1023],$/;"	v	file:
+cbest_18	src/cauchy_best_r6.c	/^static int cbest_18[1023] = {$/;"	v	file:
+cbest_19	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_19	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_19	src/cauchy_best_r6.c	/^static int cbest_19[1023] = {$/;"	v	file:
+cbest_2	src/cauchy.c	/^static int cbest_2[3] = { 1, 2, 3 };$/;"	v	file:
+cbest_2	src/cauchy.c	/^static int cbest_2[3];$/;"	v	file:
+cbest_2	src/cauchy_best_r6.c	/^static int cbest_2[3] = { 1, 2, 3 };$/;"	v	file:
+cbest_2	src/cauchy_best_r6.c	/^static int cbest_2[3];$/;"	v	file:
+cbest_20	src/cauchy.c	/^static int *cbest_12, *cbest_13, *cbest_14, *cbest_15, *cbest_16, *cbest_17, *cbest_18, *cbest_19, *cbest_20,$/;"	v	file:
+cbest_20	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_20	src/cauchy_best_r6.c	/^static int cbest_20[1023] = {$/;"	v	file:
+cbest_21	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_21	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_21	src/cauchy_best_r6.c	/^static int cbest_21[1023] = {$/;"	v	file:
+cbest_22	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_22	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_22	src/cauchy_best_r6.c	/^static int cbest_22[1023] = {$/;"	v	file:
+cbest_23	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_23	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_23	src/cauchy_best_r6.c	/^static int cbest_23[1023] = {$/;"	v	file:
+cbest_24	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_24	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_24	src/cauchy_best_r6.c	/^static int cbest_24[1023] = {$/;"	v	file:
+cbest_25	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_25	src/cauchy_best_r6.c	/^           cbest_19[1023], cbest_20[1023], cbest_21[1023], cbest_22[1023], cbest_23[1023], cbest_24[1023], cbest_25[1023],$/;"	v	file:
+cbest_25	src/cauchy_best_r6.c	/^static int cbest_25[1023] = {$/;"	v	file:
+cbest_26	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_26	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_26	src/cauchy_best_r6.c	/^static int cbest_26[1023] = {$/;"	v	file:
+cbest_27	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_27	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_27	src/cauchy_best_r6.c	/^static int cbest_27[1023] = {$/;"	v	file:
+cbest_28	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_28	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_28	src/cauchy_best_r6.c	/^static int cbest_28[1023] = {$/;"	v	file:
+cbest_29	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_29	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_29	src/cauchy_best_r6.c	/^static int cbest_29[1023] = {$/;"	v	file:
+cbest_3	src/cauchy.c	/^static int cbest_3[7] = { 1, 2, 5, 4, 7, 3, 6 };$/;"	v	file:
+cbest_3	src/cauchy.c	/^static int cbest_3[7];$/;"	v	file:
+cbest_3	src/cauchy_best_r6.c	/^static int cbest_3[7] = { 1, 2, 5, 4, 7, 3, 6 };$/;"	v	file:
+cbest_3	src/cauchy_best_r6.c	/^static int cbest_3[7];$/;"	v	file:
+cbest_30	src/cauchy.c	/^           *cbest_21, *cbest_22, *cbest_23, *cbest_24, *cbest_25, *cbest_26, *cbest_27, *cbest_28, *cbest_29, *cbest_30,$/;"	v	file:
+cbest_30	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_30	src/cauchy_best_r6.c	/^static int cbest_30[1023] = {$/;"	v	file:
+cbest_31	src/cauchy.c	/^           *cbest_31, *cbest_32;$/;"	v	file:
+cbest_31	src/cauchy_best_r6.c	/^           cbest_26[1023], cbest_27[1023], cbest_28[1023], cbest_29[1023], cbest_30[1023], cbest_31[1023];$/;"	v	file:
+cbest_31	src/cauchy_best_r6.c	/^static int cbest_31[1023] = {$/;"	v	file:
+cbest_32	src/cauchy.c	/^           *cbest_31, *cbest_32;$/;"	v	file:
+cbest_32	src/cauchy_best_r6.c	/^static unsigned int cbest_32[1023] = {$/;"	v	file:
+cbest_32	src/cauchy_best_r6.c	/^static unsigned int cbest_32[1023];$/;"	v	file:
+cbest_4	src/cauchy.c	/^static int cbest_4[15] = { 1, 2, 9, 4, 8, 13, 3, 6, 12, 5, 11, 15, 10, 14, 7 };$/;"	v	file:
+cbest_4	src/cauchy.c	/^static int cbest_4[15];$/;"	v	file:
+cbest_4	src/cauchy_best_r6.c	/^static int cbest_4[15] = { 1, 2, 9, 4, 8, 13, 3, 6, 12, 5, 11, 15, 10, 14, 7 };$/;"	v	file:
+cbest_4	src/cauchy_best_r6.c	/^static int cbest_4[15];$/;"	v	file:
+cbest_5	src/cauchy.c	/^static int cbest_5[31] = { 1, 2, 18, 4, 9, 8, 22, 16, 3, 11, 19, 5, 10, 6, 20, 27, 13, 23, 26, 12,$/;"	v	file:
+cbest_5	src/cauchy.c	/^static int cbest_5[31];$/;"	v	file:
+cbest_5	src/cauchy_best_r6.c	/^static int cbest_5[31] = { 1, 2, 18, 4, 9, 8, 22, 16, 3, 11, 19, 5, 10, 6, 20, 27, 13, 23, 26, 12,$/;"	v	file:
+cbest_5	src/cauchy_best_r6.c	/^static int cbest_5[31];$/;"	v	file:
+cbest_6	src/cauchy.c	/^static int cbest_6[63] = { 1, 2, 33, 4, 8, 49, 16, 32, 57, 3, 6, 12, 24, 48, 5, 35, 9, 37, 10, 17,$/;"	v	file:
+cbest_6	src/cauchy.c	/^static int cbest_6[63];$/;"	v	file:
+cbest_6	src/cauchy_best_r6.c	/^static int cbest_6[63] = { 1, 2, 33, 4, 8, 49, 16, 32, 57, 3, 6, 12, 24, 48, 5, 35, 9, 37, 10, 17,$/;"	v	file:
+cbest_6	src/cauchy_best_r6.c	/^static int cbest_6[63];$/;"	v	file:
+cbest_7	src/cauchy.c	/^static int cbest_7[127] = { 1, 2, 68, 4, 34, 8, 17, 16, 76, 32, 38, 3, 64, 69, 5, 19, 35, 70, 6, 9,$/;"	v	file:
+cbest_7	src/cauchy.c	/^static int cbest_7[127];$/;"	v	file:
+cbest_7	src/cauchy_best_r6.c	/^static int cbest_7[127] = { 1, 2, 68, 4, 34, 8, 17, 16, 76, 32, 38, 3, 64, 69, 5, 19, 35, 70, 6, 9,$/;"	v	file:
+cbest_7	src/cauchy_best_r6.c	/^static int cbest_7[127];$/;"	v	file:
+cbest_8	src/cauchy.c	/^static int cbest_8[255] = { 1, 2, 142, 4, 71, 8, 70, 173, 3, 35, 143, 16, 17, 67, 134, 140, 172, 6, 34$/;"	v	file:
+cbest_8	src/cauchy.c	/^static int cbest_8[255];$/;"	v	file:
+cbest_8	src/cauchy_best_r6.c	/^static int cbest_8[255] = { 1, 2, 142, 4, 71, 8, 70, 173, 3, 35, 143, 16, 17, 67, 134, 140, 172, 6, 34$/;"	v	file:
+cbest_8	src/cauchy_best_r6.c	/^static int cbest_8[255];$/;"	v	file:
+cbest_9	src/cauchy.c	/^static int cbest_9[511] = { 1, 2, 264, 4, 132, 8, 66, 16, 33, 32, 280, 64, 140, 128, 3, 70, 265, 5,$/;"	v	file:
+cbest_9	src/cauchy.c	/^static int cbest_9[511];$/;"	v	file:
+cbest_9	src/cauchy_best_r6.c	/^static int cbest_9[511] = { 1, 2, 264, 4, 132, 8, 66, 16, 33, 32, 280, 64, 140, 128, 3, 70, 265, 5,$/;"	v	file:
+cbest_9	src/cauchy_best_r6.c	/^static int cbest_9[511];$/;"	v	file:
+cbest_all	src/cauchy.c	/^static int *cbest_all[33];$/;"	v	file:
+cbest_all	src/cauchy_best_r6.c	/^static int *cbest_all[33];$/;"	v	file:
+cbest_init	src/cauchy.c	/^static int cbest_init = 0;$/;"	v	file:
+cbest_init	src/cauchy_best_r6.c	/^static int cbest_init = 0;$/;"	v	file:
+cbest_max_k	src/cauchy.c	/^static int cbest_max_k[33] = { -1, -1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 1023, -1,$/;"	v	file:
+cbest_max_k	src/cauchy_best_r6.c	/^static int cbest_max_k[33] = { -1, -1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 1023, $/;"	v	file:
+ctrl_bs_handler	Examples/decoder.c	/^void ctrl_bs_handler(int dummy) {$/;"	f
+ctrl_bs_handler	Examples/encoder.c	/^void ctrl_bs_handler(int dummy) {$/;"	f
+free16	Examples/reed_sol_test_gf.c	/^static void free16(void *ptr) {$/;"	f	file:
+free16	Examples/reed_sol_time_gf.c	/^static void free16(void *ptr) {$/;"	f	file:
+func_append	configure	/^func_append ()\\$/;"	f
+func_append	ltmain.sh	/^func_append ()$/;"	f
+func_append_quoted	configure	/^func_append_quoted ()\\$/;"	f
+func_append_quoted	ltmain.sh	/^func_append_quoted ()$/;"	f
+func_arith	configure	/^func_arith ()\\$/;"	f
+func_arith	ltmain.sh	/^func_arith ()$/;"	f
+func_basename	configure	/^func_basename ()\\$/;"	f
+func_basename	ltmain.sh	/^func_basename ()$/;"	f
+func_check_version_match	ltmain.sh	/^func_check_version_match ()$/;"	f
+func_config	ltmain.sh	/^func_config ()$/;"	f
+func_convert_core_file_wine_to_w32	ltmain.sh	/^func_convert_core_file_wine_to_w32 ()$/;"	f
+func_convert_core_msys_to_w32	ltmain.sh	/^func_convert_core_msys_to_w32 ()$/;"	f
+func_convert_core_path_wine_to_w32	ltmain.sh	/^func_convert_core_path_wine_to_w32 ()$/;"	f
+func_convert_file_check	ltmain.sh	/^func_convert_file_check ()$/;"	f
+func_convert_file_cygwin_to_w32	ltmain.sh	/^func_convert_file_cygwin_to_w32 ()$/;"	f
+func_convert_file_msys_to_cygwin	ltmain.sh	/^func_convert_file_msys_to_cygwin ()$/;"	f
+func_convert_file_msys_to_w32	ltmain.sh	/^func_convert_file_msys_to_w32 ()$/;"	f
+func_convert_file_nix_to_cygwin	ltmain.sh	/^func_convert_file_nix_to_cygwin ()$/;"	f
+func_convert_file_nix_to_w32	ltmain.sh	/^func_convert_file_nix_to_w32 ()$/;"	f
+func_convert_file_noop	ltmain.sh	/^func_convert_file_noop ()$/;"	f
+func_convert_path_check	ltmain.sh	/^func_convert_path_check ()$/;"	f
+func_convert_path_cygwin_to_w32	ltmain.sh	/^func_convert_path_cygwin_to_w32 ()$/;"	f
+func_convert_path_front_back_pathsep	ltmain.sh	/^func_convert_path_front_back_pathsep ()$/;"	f
+func_convert_path_msys_to_cygwin	ltmain.sh	/^func_convert_path_msys_to_cygwin ()$/;"	f
+func_convert_path_msys_to_w32	ltmain.sh	/^func_convert_path_msys_to_w32 ()$/;"	f
+func_convert_path_nix_to_cygwin	ltmain.sh	/^func_convert_path_nix_to_cygwin ()$/;"	f
+func_convert_path_nix_to_w32	ltmain.sh	/^func_convert_path_nix_to_w32 ()$/;"	f
+func_convert_path_noop	ltmain.sh	/^func_convert_path_noop ()$/;"	f
+func_cygming_dll_for_implib	ltmain.sh	/^func_cygming_dll_for_implib ()$/;"	f
+func_cygming_dll_for_implib_fallback	ltmain.sh	/^func_cygming_dll_for_implib_fallback ()$/;"	f
+func_cygming_dll_for_implib_fallback_core	ltmain.sh	/^func_cygming_dll_for_implib_fallback_core ()$/;"	f
+func_cygming_gnu_implib_p	ltmain.sh	/^func_cygming_gnu_implib_p ()$/;"	f
+func_cygming_ms_implib_p	ltmain.sh	/^func_cygming_ms_implib_p ()$/;"	f
+func_cygpath	ltmain.sh	/^func_cygpath ()$/;"	f
+func_dirname	configure	/^func_dirname ()\\$/;"	f
+func_dirname	ltmain.sh	/^func_dirname ()$/;"	f
+func_dirname_and_basename	configure	/^func_dirname_and_basename ()\\$/;"	f
+func_dirname_and_basename	ltmain.sh	/^func_dirname_and_basename ()$/;"	f
+func_echo	ltmain.sh	/^func_echo ()$/;"	f
+func_echo_all	configure	/^func_echo_all ()$/;"	f
+func_echo_all	ltmain.sh	/^func_echo_all ()$/;"	f
+func_emit_cwrapperexe_src	ltmain.sh	/^func_emit_cwrapperexe_src ()$/;"	f
+func_emit_wrapper	ltmain.sh	/^func_emit_wrapper ()$/;"	f
+func_enable_tag	ltmain.sh	/^func_enable_tag ()$/;"	f
+func_error	ltmain.sh	/^func_error ()$/;"	f
+func_exec_program	ltmain.sh	/^func_exec_program ()$/;"	f
+func_exec_program_core	ltmain.sh	/^func_exec_program_core ()$/;"	f
+func_execute_cmds	ltmain.sh	/^func_execute_cmds ()$/;"	f
+func_extract_an_archive	ltmain.sh	/^func_extract_an_archive ()$/;"	f
+func_extract_archives	ltmain.sh	/^func_extract_archives ()$/;"	f
+func_fallback_echo	configure	/^  func_fallback_echo ()$/;"	f
+func_fallback_echo	configure	/^func_fallback_echo ()$/;"	f
+func_fallback_echo	ltmain.sh	/^func_fallback_echo ()$/;"	f
+func_fatal_configuration	ltmain.sh	/^func_fatal_configuration ()$/;"	f
+func_fatal_error	ltmain.sh	/^func_fatal_error ()$/;"	f
+func_fatal_help	ltmain.sh	/^func_fatal_help ()$/;"	f
+func_features	ltmain.sh	/^func_features ()$/;"	f
+func_generate_dlsyms	ltmain.sh	/^func_generate_dlsyms ()$/;"	f
+func_grep	ltmain.sh	/^func_grep ()$/;"	f
+func_help	ltmain.sh	/^func_help ()$/;"	f
+func_infer_tag	ltmain.sh	/^func_infer_tag ()$/;"	f
+func_init_to_host_path_cmd	ltmain.sh	/^func_init_to_host_path_cmd ()$/;"	f
+func_lalib_p	ltmain.sh	/^func_lalib_p ()$/;"	f
+func_lalib_unsafe_p	ltmain.sh	/^func_lalib_unsafe_p ()$/;"	f
+func_len	configure	/^func_len ()\\$/;"	f
+func_len	ltmain.sh	/^func_len ()$/;"	f
+func_lo2o	configure	/^func_lo2o ()\\$/;"	f
+func_lo2o	ltmain.sh	/^func_lo2o ()$/;"	f
+func_lt_dump_args	ltmain.sh	/^func_lt_dump_args ()$/;"	f
+func_ltwrapper_executable_p	ltmain.sh	/^func_ltwrapper_executable_p ()$/;"	f
+func_ltwrapper_p	ltmain.sh	/^func_ltwrapper_p ()$/;"	f
+func_ltwrapper_script_p	ltmain.sh	/^func_ltwrapper_script_p ()$/;"	f
+func_ltwrapper_scriptname	ltmain.sh	/^func_ltwrapper_scriptname ()$/;"	f
+func_missing_arg	ltmain.sh	/^func_missing_arg ()$/;"	f
+func_mkdir_p	ltmain.sh	/^func_mkdir_p ()$/;"	f
+func_mktempdir	ltmain.sh	/^func_mktempdir ()$/;"	f
+func_mode_compile	ltmain.sh	/^func_mode_compile ()$/;"	f
+func_mode_execute	ltmain.sh	/^func_mode_execute ()$/;"	f
+func_mode_finish	ltmain.sh	/^func_mode_finish ()$/;"	f
+func_mode_help	ltmain.sh	/^func_mode_help ()$/;"	f
+func_mode_install	ltmain.sh	/^func_mode_install ()$/;"	f
+func_mode_link	ltmain.sh	/^func_mode_link ()$/;"	f
+func_mode_uninstall	ltmain.sh	/^func_mode_uninstall ()$/;"	f
+func_normal_abspath	ltmain.sh	/^func_normal_abspath ()$/;"	f
+func_parse_lt_options	ltmain.sh	/^func_parse_lt_options ()$/;"	f
+func_quote_for_eval	ltmain.sh	/^func_quote_for_eval ()$/;"	f
+func_quote_for_expand	ltmain.sh	/^func_quote_for_expand ()$/;"	f
+func_relative_path	ltmain.sh	/^func_relative_path ()$/;"	f
+func_replace_sysroot	ltmain.sh	/^func_replace_sysroot ()$/;"	f
+func_resolve_sysroot	ltmain.sh	/^func_resolve_sysroot ()$/;"	f
+func_show_eval	ltmain.sh	/^func_show_eval ()$/;"	f
+func_show_eval_locale	ltmain.sh	/^func_show_eval_locale ()$/;"	f
+func_source	ltmain.sh	/^func_source ()$/;"	f
+func_split_long_opt	configure	/^func_split_long_opt ()\\$/;"	f
+func_split_long_opt	ltmain.sh	/^func_split_long_opt ()$/;"	f
+func_split_short_opt	configure	/^func_split_short_opt ()\\$/;"	f
+func_split_short_opt	ltmain.sh	/^func_split_short_opt ()$/;"	f
+func_stripname	configure	/^func_stripname ()\\$/;"	f
+func_stripname	ltmain.sh	/^func_stripname ()$/;"	f
+func_to_host_file	ltmain.sh	/^func_to_host_file ()$/;"	f
+func_to_host_path	ltmain.sh	/^func_to_host_path ()$/;"	f
+func_to_tool_file	ltmain.sh	/^func_to_tool_file ()$/;"	f
+func_tr_sh	ltmain.sh	/^func_tr_sh ()$/;"	f
+func_usage	ltmain.sh	/^func_usage ()$/;"	f
+func_verbose	ltmain.sh	/^func_verbose ()$/;"	f
+func_version	ltmain.sh	/^func_version ()$/;"	f
+func_warning	ltmain.sh	/^func_warning ()$/;"	f
+func_win32_import_lib_p	ltmain.sh	/^func_win32_import_lib_p ()$/;"	f
+func_win32_libid	ltmain.sh	/^func_win32_libid ()$/;"	f
+func_write_libtool_object	ltmain.sh	/^func_write_libtool_object ()$/;"	f
+func_xform	configure	/^func_xform ()\\$/;"	f
+func_xform	ltmain.sh	/^func_xform ()$/;"	f
+galois_change_technique	src/galois.c	/^void galois_change_technique(gf_t *gf, int w)$/;"	f
+galois_get_field_ptr	src/galois.c	/^gf_t *galois_get_field_ptr(int w)$/;"	f
+galois_init_composite_field	src/galois.c	/^gf_t* galois_init_composite_field(int w,$/;"	f
+galois_init_default_field	src/galois.c	/^static void galois_init_default_field(int w)$/;"	f	file:
+galois_init_field	src/galois.c	/^gf_t* galois_init_field(int w,$/;"	f
+galois_inverse	src/galois.c	/^int galois_inverse(int y, int w)$/;"	f
+galois_region_xor	src/galois.c	/^void galois_region_xor(char *src, char *dest, int nbytes)$/;"	f
+galois_single_divide	src/galois.c	/^int galois_single_divide(int x, int y, int w)$/;"	f
+galois_single_multiply	src/galois.c	/^int galois_single_multiply(int x, int y, int w)$/;"	f
+galois_w08_region_multiply	src/galois.c	/^void galois_w08_region_multiply(char *region,      \/* Region to multiply *\/$/;"	f
+galois_w16_region_multiply	src/galois.c	/^void galois_w16_region_multiply(char *region,      \/* Region to multiply *\/$/;"	f
+galois_w16_region_xor	src/galois.c	/^void galois_w16_region_xor(void *src, void *dest, int nbytes)$/;"	f
+galois_w32_region_multiply	src/galois.c	/^void galois_w32_region_multiply(char *region,      \/* Region to multiply *\/$/;"	f
+galois_w32_region_xor	src/galois.c	/^void galois_w32_region_xor(void *src, void *dest, int nbytes)$/;"	f
+galois_w8_region_xor	src/galois.c	/^void galois_w8_region_xor(void *src, void *dest, int nbytes)$/;"	f
+get_gf	Examples/reed_sol_test_gf.c	/^gf_t* get_gf(int w, int argc, char **argv, int starting)$/;"	f
+get_gf	Examples/reed_sol_time_gf.c	/^gf_t* get_gf(int w, int argc, char **argv, int starting)$/;"	f
+gfp_array	src/galois.c	/^gf_t *gfp_array[MAX_GF_INSTANCES] = { 0 };$/;"	v
+gfp_is_composite	src/galois.c	/^int  gfp_is_composite[MAX_GF_INSTANCES] = { 0 };$/;"	v
+is_prime	Examples/encoder.c	/^int is_prime(int w) {$/;"	f
+is_valid_gf	src/galois.c	/^static int is_valid_gf(gf_t *gf, int w)$/;"	f	file:
+jerasure_autoconf_test	src/jerasure.c	/^int jerasure_autoconf_test()$/;"	f
+jerasure_bitmatrix_decode	src/jerasure.c	/^int jerasure_bitmatrix_decode(int k, int m, int w, int *bitmatrix, int row_k_ones, int *erasures,$/;"	f
+jerasure_bitmatrix_dotprod	src/jerasure.c	/^void jerasure_bitmatrix_dotprod(int k, int w, int *bitmatrix_row,$/;"	f
+jerasure_bitmatrix_encode	src/jerasure.c	/^void jerasure_bitmatrix_encode(int k, int m, int w, int *bitmatrix,$/;"	f
+jerasure_do_parity	src/jerasure.c	/^void jerasure_do_parity(int k, char **data_ptrs, char *parity_ptr, int size) $/;"	f
+jerasure_do_scheduled_operations	src/jerasure.c	/^void jerasure_do_scheduled_operations(char **ptrs, int **operations, int packetsize)$/;"	f
+jerasure_dumb_bitmatrix_to_schedule	src/jerasure.c	/^int **jerasure_dumb_bitmatrix_to_schedule(int k, int m, int w, int *bitmatrix)$/;"	f
+jerasure_erasures_to_erased	src/jerasure.c	/^int *jerasure_erasures_to_erased(int k, int m, int *erasures)$/;"	f
+jerasure_free_schedule	src/jerasure.c	/^void jerasure_free_schedule(int **schedule)$/;"	f
+jerasure_free_schedule_cache	src/jerasure.c	/^void jerasure_free_schedule_cache(int k, int m, int ***cache)$/;"	f
+jerasure_generate_decoding_schedule	src/jerasure.c	/^static int **jerasure_generate_decoding_schedule(int k, int m, int w, int *bitmatrix, int *erasures, int smart)$/;"	f	file:
+jerasure_generate_schedule_cache	src/jerasure.c	/^int ***jerasure_generate_schedule_cache(int k, int m, int w, int *bitmatrix, int smart)$/;"	f
+jerasure_get_stats	src/jerasure.c	/^void jerasure_get_stats(double *fill_in)$/;"	f
+jerasure_invert_bitmatrix	src/jerasure.c	/^int jerasure_invert_bitmatrix(int *mat, int *inv, int rows)$/;"	f
+jerasure_invert_matrix	src/jerasure.c	/^int jerasure_invert_matrix(int *mat, int *inv, int rows, int w)$/;"	f
+jerasure_invertible_bitmatrix	src/jerasure.c	/^int jerasure_invertible_bitmatrix(int *mat, int rows)$/;"	f
+jerasure_invertible_matrix	src/jerasure.c	/^int jerasure_invertible_matrix(int *mat, int rows, int w)$/;"	f
+jerasure_make_decoding_bitmatrix	src/jerasure.c	/^int jerasure_make_decoding_bitmatrix(int k, int m, int w, int *matrix, int *erased, int *decoding_matrix, int *dm_ids)$/;"	f
+jerasure_make_decoding_matrix	src/jerasure.c	/^int jerasure_make_decoding_matrix(int k, int m, int w, int *matrix, int *erased, int *decoding_matrix, int *dm_ids)$/;"	f
+jerasure_matrix_decode	src/jerasure.c	/^int jerasure_matrix_decode(int k, int m, int w, int *matrix, int row_k_ones, int *erasures,$/;"	f
+jerasure_matrix_dotprod	src/jerasure.c	/^void jerasure_matrix_dotprod(int k, int w, int *matrix_row,$/;"	f
+jerasure_matrix_encode	src/jerasure.c	/^void jerasure_matrix_encode(int k, int m, int w, int *matrix,$/;"	f
+jerasure_matrix_multiply	src/jerasure.c	/^int *jerasure_matrix_multiply(int *m1, int *m2, int r1, int c1, int r2, int c2, int w)$/;"	f
+jerasure_matrix_to_bitmatrix	src/jerasure.c	/^int *jerasure_matrix_to_bitmatrix(int k, int m, int w, int *matrix) $/;"	f
+jerasure_print_bitmatrix	src/jerasure.c	/^void jerasure_print_bitmatrix(int *m, int rows, int cols, int w)$/;"	f
+jerasure_print_matrix	src/jerasure.c	/^void jerasure_print_matrix(int *m, int rows, int cols, int w)$/;"	f
+jerasure_schedule_decode_cache	src/jerasure.c	/^int jerasure_schedule_decode_cache(int k, int m, int w, int ***scache, int *erasures,$/;"	f
+jerasure_schedule_decode_lazy	src/jerasure.c	/^int jerasure_schedule_decode_lazy(int k, int m, int w, int *bitmatrix, int *erasures,$/;"	f
+jerasure_schedule_encode	src/jerasure.c	/^void jerasure_schedule_encode(int k, int m, int w, int **schedule,$/;"	f
+jerasure_smart_bitmatrix_to_schedule	src/jerasure.c	/^int **jerasure_smart_bitmatrix_to_schedule(int k, int m, int w, int *bitmatrix)$/;"	f
+jerasure_total_gf_bytes	src/jerasure.c	/^static double jerasure_total_gf_bytes = 0;$/;"	v	file:
+jerasure_total_memcpy_bytes	src/jerasure.c	/^static double jerasure_total_memcpy_bytes = 0;$/;"	v	file:
+jerasure_total_xor_bytes	src/jerasure.c	/^static double jerasure_total_xor_bytes = 0;$/;"	v	file:
+jfread	Examples/encoder.c	/^int jfread(void *ptr, int size, int nmembers, FILE *stream)$/;"	f
+liber8tion_coding_bitmatrix	src/liberation.c	/^int *liber8tion_coding_bitmatrix(int k)$/;"	f
+liberation_coding_bitmatrix	src/liberation.c	/^int *liberation_coding_bitmatrix(int k, int w)$/;"	f
+main	Examples/cauchy_01.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/cauchy_02.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/cauchy_03.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/cauchy_04.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/decoder.c	/^int main (int argc, char **argv) {$/;"	f
+main	Examples/encoder.c	/^int main (int argc, char **argv) {$/;"	f
+main	Examples/jerasure_01.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_02.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_03.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_04.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_05.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_06.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_07.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/jerasure_08.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/liberation_01.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_01.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_02.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_03.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_04.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_test_gf.c	/^int main(int argc, char **argv)$/;"	f
+main	Examples/reed_sol_time_gf.c	/^int main(int argc, char **argv)$/;"	f
+main	config.guess	/^		main()$/;"	f
+main	config.guess	/^	main ()$/;"	f
+main	config.guess	/^main ()$/;"	f
+malloc16	Examples/reed_sol_test_gf.c	/^static void *malloc16(int size) {$/;"	f	file:
+malloc16	Examples/reed_sol_time_gf.c	/^static void *malloc16(int size) {$/;"	f	file:
+method	Examples/decoder.c	/^enum Coding_Technique method;$/;"	v	typeref:enum:Coding_Technique
+method	Examples/encoder.c	/^enum Coding_Technique method;$/;"	v	typeref:enum:Coding_Technique
+n	Examples/decoder.c	/^int readins, n;$/;"	v
+n	Examples/encoder.c	/^int readins, n;$/;"	v
+prim08	src/reed_sol.c	/^static int prim08 = -1;$/;"	v	file:
+prim16	src/reed_sol.c	/^static int prim16 = -1;$/;"	v	file:
+prim32	src/reed_sol.c	/^static int prim32 = -1;$/;"	v	file:
+print_array	Examples/cauchy_02.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/cauchy_03.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/cauchy_04.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/jerasure_06.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/jerasure_07.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/jerasure_08.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_array	Examples/liberation_01.c	/^static print_array(char **ptrs, int ndevices, int size, int packetsize, char *label)$/;"	f	file:
+print_data_and_coding	Examples/jerasure_05.c	/^static void print_data_and_coding(int k, int m, int w, int size, $/;"	f	file:
+print_data_and_coding	Examples/reed_sol_01.c	/^static void print_data_and_coding(int k, int m, int w, int size, $/;"	f	file:
+print_data_and_coding	Examples/reed_sol_03.c	/^static void print_data_and_coding(int k, int m, int w, int size, $/;"	f	file:
+prototypes	configure	/^   function prototypes and stuff, but not '\\xHH' hex character constants.$/;"	f
+readins	Examples/decoder.c	/^int readins, n;$/;"	v
+readins	Examples/encoder.c	/^int readins, n;$/;"	v
+reed_sol_big_vandermonde_distribution_matrix	src/reed_sol.c	/^int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w)$/;"	f
+reed_sol_extended_vandermonde_matrix	src/reed_sol.c	/^int *reed_sol_extended_vandermonde_matrix(int rows, int cols, int w)$/;"	f
+reed_sol_galois_w08_region_multby_2	src/reed_sol.c	/^void reed_sol_galois_w08_region_multby_2(char *region, int nbytes)$/;"	f
+reed_sol_galois_w16_region_multby_2	src/reed_sol.c	/^void reed_sol_galois_w16_region_multby_2(char *region, int nbytes)$/;"	f
+reed_sol_galois_w32_region_multby_2	src/reed_sol.c	/^void reed_sol_galois_w32_region_multby_2(char *region, int nbytes)$/;"	f
+reed_sol_r6_coding_matrix	src/reed_sol.c	/^int *reed_sol_r6_coding_matrix(int k, int w)$/;"	f
+reed_sol_r6_encode	src/reed_sol.c	/^int reed_sol_r6_encode(int k, int w, char **data_ptrs, char **coding_ptrs, int size)$/;"	f
+reed_sol_vandermonde_coding_matrix	src/reed_sol.c	/^int *reed_sol_vandermonde_coding_matrix(int k, int m, int w)$/;"	f
+set_up_ids_for_scheduled_decoding	src/jerasure.c	/^static int set_up_ids_for_scheduled_decoding(int k, int m, int *erasures, int *row_ids, int *ind_to_row)$/;"	f	file:
+set_up_ptrs_for_scheduled_decoding	src/jerasure.c	/^static char **set_up_ptrs_for_scheduled_decoding(int k, int m, int *erasures, char **data_ptrs, char **coding_ptrs)$/;"	f	file:
+talloc	Examples/cauchy_01.c	/^#define talloc(/;"	d	file:
+talloc	Examples/cauchy_02.c	/^#define talloc(/;"	d	file:
+talloc	Examples/cauchy_03.c	/^#define talloc(/;"	d	file:
+talloc	Examples/cauchy_04.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_01.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_02.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_03.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_04.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_05.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_06.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_07.c	/^#define talloc(/;"	d	file:
+talloc	Examples/jerasure_08.c	/^#define talloc(/;"	d	file:
+talloc	Examples/liberation_01.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_01.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_02.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_03.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_04.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_test_gf.c	/^#define talloc(/;"	d	file:
+talloc	Examples/reed_sol_time_gf.c	/^#define talloc(/;"	d	file:
+talloc	src/cauchy.c	/^#define talloc(/;"	d	file:
+talloc	src/cauchy_best_r6.c	/^#define talloc(/;"	d	file:
+talloc	src/jerasure.c	/^#define talloc(/;"	d	file:
+talloc	src/liberation.c	/^#define talloc(/;"	d	file:
+talloc	src/reed_sol.c	/^#define talloc(/;"	d	file:
+timer_split	Examples/reed_sol_time_gf.c	/^timer_split (const double *t)$/;"	f
+timer_start	Examples/reed_sol_time_gf.c	/^timer_start (double *t)$/;"	f
+usage	Examples/cauchy_01.c	/^usage(char *s)$/;"	f
+usage	Examples/cauchy_02.c	/^usage(char *s)$/;"	f
+usage	Examples/cauchy_03.c	/^usage(char *s)$/;"	f
+usage	Examples/cauchy_04.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_01.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_02.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_03.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_04.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_05.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_06.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_07.c	/^usage(char *s)$/;"	f
+usage	Examples/jerasure_08.c	/^usage(char *s)$/;"	f
+usage	Examples/liberation_01.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_01.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_02.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_03.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_04.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_test_gf.c	/^usage(char *s)$/;"	f
+usage	Examples/reed_sol_time_gf.c	/^usage(char *s)$/;"	f
