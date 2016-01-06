@@ -4,17 +4,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* gcc -llrc example.c */
+
 int main(int argc, char **argv) {
 
-    int        chunk_size = 16;
-    lrc_t     *lrc        = &(lrc_t) {0};
-    lrc_buf_t *buf        = &(lrc_buf_t) {0};
+    int        size = 16;
+    lrc_t     *lrc  = &(lrc_t) {0};
+    lrc_buf_t *buf  = &(lrc_buf_t) {0};
 
     if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 2) != 0) {
         exit(-1);
     }
 
-    if (lrc_buf_init(buf, lrc, chunk_size) != 0) {
+    if (lrc_buf_init(buf, lrc, size) != 0) {
         exit(-1);
     }
 
