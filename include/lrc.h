@@ -30,7 +30,7 @@
 #define _concat(a, b) a ## b
 
 #define _lrc_n_arr_k(...) (sizeof((uint8_t[]){__VA_ARGS__}) / sizeof(uint8_t)), \
-                                  (uint8_t[]){__VA_ARGS__}
+    (uint8_t[]){__VA_ARGS__}
 
 /* k_param is in form: 'k(2, 3, 4)'
  *
@@ -44,8 +44,13 @@
  * ->   lrc_init_n(lrc, 2, (uint8_t[]){2, 3}, 2)
  */
 #define lrc_init(lrc, k_param, m) \
-        lrc_init_n((lrc), _concat(_lrc_n_arr_, k_param), (m))
+    lrc_init_n((lrc), _concat(_lrc_n_arr_, k_param), (m))
 
+
+extern int *reed_sol_vandermonde_coding_matrix(int k, int m, int w);
+extern int jerasure_matrix_decode(int k, int m, int w,
+                                  int *matrix, int row_k_ones, int *erasures,
+                                  char **data_ptrs, char **coding_ptrs, int size);
 
 typedef struct {
   uint8_t start;

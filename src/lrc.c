@@ -6,9 +6,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "reed_sol.h"
-#include "jerasure.h"
-
 int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
 
   int ret = 0;
