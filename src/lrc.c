@@ -343,7 +343,7 @@ int lrc_buf_init(lrc_buf_t *lb, lrc_t *lrc, int64_t chunk_size) {
   lb->n = lb->n_data + lb->n_code;
 
   lb->chunk_size = chunk_size;
-  lb->aligned_chunk_size = ALIGN_16(chunk_size);
+  lb->aligned_chunk_size = lrc_align_16(chunk_size);
 
   ret = posix_memalign((void **)&lb->buf, 16,
                        lb->aligned_chunk_size * lb->n);

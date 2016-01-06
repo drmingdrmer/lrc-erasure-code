@@ -5,9 +5,13 @@
 
 /* #define LRC_DEBUG 1 */
 
+#define LRC_OUT_OF_MEMORY (-1)
+#define LRC_UNRECOVERABLE (-2)
+#define LRC_INIT_TWICE    (-3)
+
 #ifdef LRC_DEBUG
-#   define dd( _fmt, ... )   lrc_stderr_printf( _fmt "\n", ##__VA_ARGS__ )
-#   define dlog( _fmt, ... ) lrc_stderr_printf( _fmt, ##__VA_ARGS__ )
+#   define dd( _fmt, ... )   fprintf( stderr, _fmt "\n", ##__VA_ARGS__)
+#   define dlog( _fmt, ... ) fprintf( stderr, _fmt,      ##__VA_ARGS__)
 #   define lrc_debug_buf_line(...) lrc_debug_buf_line_( __VA_ARGS__ )
 #   define lrc_debug_matrix(...) lrc_debug_matrix_( __VA_ARGS__ )
 #   define lrc_debug_sources(...) lrc_debug_sources_( __VA_ARGS__ )
@@ -19,15 +23,9 @@
 #   define lrc_debug_sources(...)
 #endif /* LRC_DEBUG */
 
-#define lrc_stderr_printf( _fmt, ...)  fprintf( stderr, _fmt, ##__VA_ARGS__)
+#define lrc_align_16(val) (((val - 1) / 16 + 1) * 16)
 
-#define ALIGN_16(val) (((val - 1) / 16 + 1) * 16)
-
-#define LRC_OUT_OF_MEMORY (-1)
-#define LRC_UNRECOVERABLE (-2)
-#define LRC_INIT_TWICE    (-3)
-
-#define _concat(a, b) a ## b
+#define _lrc_concat(a, b) a ## b
 
 #define _lrc_n_arr_k(...) (sizeof((uint8_t[]){__VA_ARGS__}) / sizeof(uint8_t)), \
     (uint8_t[]){__VA_ARGS__}
@@ -37,14 +35,14 @@
  * expansion of thie macro:
  *
  *      lrc_init(lrc, k(2, 3), 2)
- * ->   lrc_init_n(lrc, _concat(_lrc_n_arr_, k(2, 3), 2)
+ * ->   lrc_init_n(lrc, _lrc_concat(_lrc_n_arr_, k(2, 3), 2)
  * ->   lrc_init_n(lrc, _lrc_n_arr_ ## k(2, 3), 2)
  * ->   lrc_init_n(lrc, _lrc_n_arr_k(2, 3), 2)
  * ->   lrc_init_n(lrc, (sizeof((uint8_t[]){2, 3}) / sizeof(uint8_t)), (uint8_t[]){2, 3}, 2)
  * ->   lrc_init_n(lrc, 2, (uint8_t[]){2, 3}, 2)
  */
 #define lrc_init(lrc, k_param, m) \
-    lrc_init_n((lrc), _concat(_lrc_n_arr_, k_param), (m))
+    lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m))
 
 
 extern int *reed_sol_vandermonde_coding_matrix(int k, int m, int w);
