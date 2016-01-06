@@ -3,8 +3,8 @@ AM_CFLAGS = -O2 $(SIMD_FLAGS) -fPIC
 
 ACLOCAL_AMFLAGS = -I m4
 
-lib_LIBRARIES = liblrc.a
-liblrc_a_SOURCES = \
+lib_LTLIBRARIES = liblrc.la
+liblrc_la_SOURCES = \
                   gf.c  \
                   gf_method.c  \
                   gf_wgen.c  \
@@ -24,7 +24,7 @@ liblrc_a_SOURCES = \
                   lrc.c
 
 if HAVE_NEON
-liblrc_a_SOURCES += neon/gf_w4_neon.c  \
+liblrc_la_SOURCES += neon/gf_w4_neon.c  \
                     neon/gf_w8_neon.c  \
                     neon/gf_w16_neon.c \
                     neon/gf_w32_neon.c \

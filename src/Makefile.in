@@ -137,33 +137,26 @@ am__uninstall_files_from_dir = { \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
 am__installdirs = "$(DESTDIR)$(libdir)"
-LIBRARIES = $(lib_LIBRARIES)
-ARFLAGS = cru
-AM_V_AR = $(am__v_AR_@AM_V@)
-am__v_AR_ = $(am__v_AR_@AM_DEFAULT_V@)
-am__v_AR_0 = @echo "  AR      " $@;
-am__v_AR_1 = 
-liblrc_a_AR = $(AR) $(ARFLAGS)
-liblrc_a_LIBADD =
-am__liblrc_a_SOURCES_DIST = gf.c gf_method.c gf_wgen.c gf_w4.c gf_w8.c \
-	gf_w16.c gf_w32.c gf_w64.c gf_w128.c gf_rand.c gf_general.c \
-	cauchy.c galois.c liberation.c reed_sol.c jerasure.c lrc.c \
-	neon/gf_w4_neon.c neon/gf_w8_neon.c neon/gf_w16_neon.c \
-	neon/gf_w32_neon.c neon/gf_w64_neon.c
+LTLIBRARIES = $(lib_LTLIBRARIES)
+liblrc_la_LIBADD =
+am__liblrc_la_SOURCES_DIST = gf.c gf_method.c gf_wgen.c gf_w4.c \
+	gf_w8.c gf_w16.c gf_w32.c gf_w64.c gf_w128.c gf_rand.c \
+	gf_general.c cauchy.c galois.c liberation.c reed_sol.c \
+	jerasure.c lrc.c neon/gf_w4_neon.c neon/gf_w8_neon.c \
+	neon/gf_w16_neon.c neon/gf_w32_neon.c neon/gf_w64_neon.c
 am__dirstamp = $(am__leading_dot)dirstamp
-@HAVE_NEON_TRUE@am__objects_1 = neon/gf_w4_neon.$(OBJEXT) \
-@HAVE_NEON_TRUE@	neon/gf_w8_neon.$(OBJEXT) \
-@HAVE_NEON_TRUE@	neon/gf_w16_neon.$(OBJEXT) \
-@HAVE_NEON_TRUE@	neon/gf_w32_neon.$(OBJEXT) \
-@HAVE_NEON_TRUE@	neon/gf_w64_neon.$(OBJEXT)
-am_liblrc_a_OBJECTS = gf.$(OBJEXT) gf_method.$(OBJEXT) \
-	gf_wgen.$(OBJEXT) gf_w4.$(OBJEXT) gf_w8.$(OBJEXT) \
-	gf_w16.$(OBJEXT) gf_w32.$(OBJEXT) gf_w64.$(OBJEXT) \
-	gf_w128.$(OBJEXT) gf_rand.$(OBJEXT) gf_general.$(OBJEXT) \
-	cauchy.$(OBJEXT) galois.$(OBJEXT) liberation.$(OBJEXT) \
-	reed_sol.$(OBJEXT) jerasure.$(OBJEXT) lrc.$(OBJEXT) \
-	$(am__objects_1)
-liblrc_a_OBJECTS = $(am_liblrc_a_OBJECTS)
+@HAVE_NEON_TRUE@am__objects_1 = neon/gf_w4_neon.lo neon/gf_w8_neon.lo \
+@HAVE_NEON_TRUE@	neon/gf_w16_neon.lo neon/gf_w32_neon.lo \
+@HAVE_NEON_TRUE@	neon/gf_w64_neon.lo
+am_liblrc_la_OBJECTS = gf.lo gf_method.lo gf_wgen.lo gf_w4.lo gf_w8.lo \
+	gf_w16.lo gf_w32.lo gf_w64.lo gf_w128.lo gf_rand.lo \
+	gf_general.lo cauchy.lo galois.lo liberation.lo reed_sol.lo \
+	jerasure.lo lrc.lo $(am__objects_1)
+liblrc_la_OBJECTS = $(am_liblrc_la_OBJECTS)
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -181,10 +174,6 @@ depcomp =
 am__depfiles_maybe =
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
-AM_V_lt = $(am__v_lt_@AM_V@)
-am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
-am__v_lt_0 = --silent
-am__v_lt_1 = 
 LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) \
 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
@@ -201,8 +190,8 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(liblrc_a_SOURCES)
-DIST_SOURCES = $(am__liblrc_a_SOURCES_DIST)
+SOURCES = $(liblrc_la_SOURCES)
+DIST_SOURCES = $(am__liblrc_la_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -345,10 +334,10 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_srcdir)/include
 AM_CFLAGS = -O2 $(SIMD_FLAGS) -fPIC
 ACLOCAL_AMFLAGS = -I m4
-lib_LIBRARIES = liblrc.a
-liblrc_a_SOURCES = gf.c gf_method.c gf_wgen.c gf_w4.c gf_w8.c gf_w16.c \
-	gf_w32.c gf_w64.c gf_w128.c gf_rand.c gf_general.c cauchy.c \
-	galois.c liberation.c reed_sol.c jerasure.c lrc.c \
+lib_LTLIBRARIES = liblrc.la
+liblrc_la_SOURCES = gf.c gf_method.c gf_wgen.c gf_w4.c gf_w8.c \
+	gf_w16.c gf_w32.c gf_w64.c gf_w128.c gf_rand.c gf_general.c \
+	cauchy.c galois.c liberation.c reed_sol.c jerasure.c lrc.c \
 	$(am__append_1)
 all: all-am
 
@@ -383,9 +372,10 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-install-libLIBRARIES: $(lib_LIBRARIES)
+
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
 	list2=; for p in $$list; do \
 	  if test -f $$p; then \
 	    list2="$$list2 $$p"; \
@@ -394,43 +384,45 @@ install-libLIBRARIES: $(lib_LIBRARIES)
 	test -z "$$list2" || { \
 	  echo " $(MKDIR_P) '$(DESTDIR)$(libdir)'"; \
 	  $(MKDIR_P) "$(DESTDIR)$(libdir)" || exit 1; \
-	  echo " $(INSTALL_DATA) $$list2 '$(DESTDIR)$(libdir)'"; \
-	  $(INSTALL_DATA) $$list2 "$(DESTDIR)$(libdir)" || exit $$?; }
-	@$(POST_INSTALL)
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(libdir)'"; \
+	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(libdir)"; \
+	}
+
+uninstall-libLTLIBRARIES:
+	@$(NORMAL_UNINSTALL)
+	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
 	for p in $$list; do \
-	  if test -f $$p; then \
-	    $(am__strip_dir) \
-	    echo " ( cd '$(DESTDIR)$(libdir)' && $(RANLIB) $$f )"; \
-	    ( cd "$(DESTDIR)$(libdir)" && $(RANLIB) $$f ) || exit $$?; \
-	  else :; fi; \
+	  $(am__strip_dir) \
+	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(libdir)/$$f'"; \
+	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(libdir)/$$f"; \
 	done
 
-uninstall-libLIBRARIES:
-	@$(NORMAL_UNINSTALL)
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	dir='$(DESTDIR)$(libdir)'; $(am__uninstall_files_from_dir)
-
-clean-libLIBRARIES:
-	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
+clean-libLTLIBRARIES:
+	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+	@list='$(lib_LTLIBRARIES)'; \
+	locs=`for p in $$list; do echo $$p; done | \
+	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
+	      sort -u`; \
+	test -z "$$locs" || { \
+	  echo rm -f $${locs}; \
+	  rm -f $${locs}; \
+	}
 neon/$(am__dirstamp):
 	@$(MKDIR_P) neon
 	@: > neon/$(am__dirstamp)
-neon/gf_w4_neon.$(OBJEXT): neon/$(am__dirstamp)
-neon/gf_w8_neon.$(OBJEXT): neon/$(am__dirstamp)
-neon/gf_w16_neon.$(OBJEXT): neon/$(am__dirstamp)
-neon/gf_w32_neon.$(OBJEXT): neon/$(am__dirstamp)
-neon/gf_w64_neon.$(OBJEXT): neon/$(am__dirstamp)
+neon/gf_w4_neon.lo: neon/$(am__dirstamp)
+neon/gf_w8_neon.lo: neon/$(am__dirstamp)
+neon/gf_w16_neon.lo: neon/$(am__dirstamp)
+neon/gf_w32_neon.lo: neon/$(am__dirstamp)
+neon/gf_w64_neon.lo: neon/$(am__dirstamp)
 
-liblrc.a: $(liblrc_a_OBJECTS) $(liblrc_a_DEPENDENCIES) $(EXTRA_liblrc_a_DEPENDENCIES) 
-	$(AM_V_at)-rm -f liblrc.a
-	$(AM_V_AR)$(liblrc_a_AR) liblrc.a $(liblrc_a_OBJECTS) $(liblrc_a_LIBADD)
-	$(AM_V_at)$(RANLIB) liblrc.a
+liblrc.la: $(liblrc_la_OBJECTS) $(liblrc_la_DEPENDENCIES) $(EXTRA_liblrc_la_DEPENDENCIES) 
+	$(AM_V_CCLD)$(LINK) -rpath $(libdir) $(liblrc_la_OBJECTS) $(liblrc_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f neon/*.$(OBJEXT)
+	-rm -f neon/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -449,6 +441,7 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+	-rm -rf neon/.libs neon/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -534,7 +527,7 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LIBRARIES)
+all-am: Makefile $(LTLIBRARIES)
 installdirs:
 	for dir in "$(DESTDIR)$(libdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
@@ -572,7 +565,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libLIBRARIES clean-libtool \
+clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
@@ -598,7 +591,7 @@ install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am: install-libLIBRARIES
+install-exec-am: install-libLTLIBRARIES
 
 install-html: install-html-am
 
@@ -637,23 +630,23 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLIBRARIES
+uninstall-am: uninstall-libLTLIBRARIES
 
 .MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS TAGS all all-am check check-am clean clean-generic \
-	clean-libLIBRARIES clean-libtool cscopelist-am ctags ctags-am \
-	distclean distclean-compile distclean-generic \
+	clean-libLTLIBRARIES clean-libtool cscopelist-am ctags \
+	ctags-am distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLIBRARIES install-man install-pdf \
+	install-info-am install-libLTLIBRARIES install-man install-pdf \
 	install-pdf-am install-ps install-ps-am install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-libLIBRARIES
+	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
 
 .PRECIOUS: Makefile
 
