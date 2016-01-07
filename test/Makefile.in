@@ -109,14 +109,14 @@ CONFIG_CLEAN_VPATH_FILES =
 PROGRAMS = $(noinst_PROGRAMS)
 am_example_OBJECTS = example.$(OBJEXT)
 example_OBJECTS = $(am_example_OBJECTS)
-example_DEPENDENCIES = ../src/liblrc.a
+example_DEPENDENCIES = ../src/liblrc.la
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 am_test_lrc_OBJECTS = test_lrc.$(OBJEXT)
 test_lrc_OBJECTS = $(am_test_lrc_OBJECTS)
-test_lrc_DEPENDENCIES = ../src/liblrc.a
+test_lrc_DEPENDENCIES = ../src/liblrc.la
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -294,9 +294,9 @@ top_srcdir = @top_srcdir@
 AM_CPPFLAGS = -I$(top_srcdir)/include
 AM_CFLAGS = -O2 $(SIMD_FLAGS) -fPIC
 test_lrc_SOURCES = test_lrc.c
-test_lrc_LDADD = ../src/liblrc.a
+test_lrc_LDADD = ../src/liblrc.la
 example_SOURCES = example.c
-example_LDADD = ../src/liblrc.a
+example_LDADD = ../src/liblrc.la
 all: all-am
 
 .SUFFIXES:

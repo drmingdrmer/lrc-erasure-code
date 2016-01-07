@@ -8,6 +8,7 @@
 #define LRC_OUT_OF_MEMORY (-1)
 #define LRC_UNRECOVERABLE (-2)
 #define LRC_INIT_TWICE    (-3)
+#define LRC_INVALID_M     (-4)
 
 #ifdef LRC_DEBUG
 #   define dd( _fmt, ... )   fprintf( stderr, _fmt "\n", ##__VA_ARGS__)
@@ -28,7 +29,7 @@
 #define _lrc_concat(a, b) a ## b
 
 #define _lrc_n_arr_k(...) (sizeof((uint8_t[]){__VA_ARGS__}) / sizeof(uint8_t)), \
-    (uint8_t[]){__VA_ARGS__}
+  (uint8_t[]){__VA_ARGS__}
 
 /* k_param is in form: 'k(2, 3, 4)'
  *
@@ -42,7 +43,7 @@
  * ->   lrc_init_n(lrc, 2, (uint8_t[]){2, 3}, 2)
  */
 #define lrc_init(lrc, k_param, m) \
-    lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m))
+  lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m))
 
 
 extern int *reed_sol_vandermonde_coding_matrix(int k, int m, int w);
@@ -77,13 +78,12 @@ typedef struct {
 
   int          k;             /* nr of data                                  */
   int          m;             /* nr of code of original reed-solomon ec      */
-  int          lrc_m;         /* nr of lrc code: k - 1 + m                   */
-  int          n;             /* total number of chunks: k + lrc_m           */
+  int          n;             /* total number of chunks: k + m               */
 
   int          n_local;       /* nr of local EC                              */
   lrc_local_t *locals;        /* start index and nr of elts of each local EC */
 
-  int         *matrix;        /* ecoding matrix lrc_m *k                     */
+  int         *matrix;        /* ecoding matrix m *k                         */
   int8_t      *code_erased;   /* for encode                                  */
 
   int8_t       inited_;

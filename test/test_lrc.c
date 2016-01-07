@@ -164,8 +164,9 @@ int test_sources_2_2_2() {
   lrc_t *lrc = &(lrc_t) {0};
   int   ret = 0;
 
-  ret = lrc_init(lrc, k(2, 2), 2);
-  eq(3, lrc->lrc_m, "lrc_m");
+  ret = lrc_init(lrc, k(2, 2), 3);
+  eq(0, ret, "lrc_init");
+  eq(3, lrc->m, "m");
   eq(7, lrc->n, "n");
   eq(0, ret, "lrc_init");
 
@@ -248,13 +249,13 @@ int test_12_4() {
 
 int test_lrc_6_6_3() {
 
-  lrc_t     *lrc = &(lrc_t){0};
+  lrc_t     *lrc = &(lrc_t) {0};
   lrc_buf_t *lb  = &(lrc_buf_t) {0};
   int        ret = 0;
   char       saved[512];
 
-  ret = lrc_init(lrc, k(6, 6), 3);
-  eq(4, lrc->lrc_m, "lrc_m");
+  ret = lrc_init(lrc, k(6, 6), 4);
+  eq(4, lrc->m, "m");
   eq(16, lrc->n, "n");
   eq(0, ret, "lrc_init");
 
@@ -333,9 +334,9 @@ int test_lrc_6_6_3_count_all() {
   int n_reconsruct = 0;
   int n_ok = 0;
 
-  ret = lrc_init(&lrc, k(6, 6), 3);
+  ret = lrc_init(&lrc, k(6, 6), 4);
   eq(12, lrc.k, "k");
-  eq(4, lrc.lrc_m, "lrc_m");
+  eq(4, lrc.m, "m");
   eq(16, lrc.n, "n");
   eq(0, ret, "lrc_init");
 

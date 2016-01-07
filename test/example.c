@@ -8,45 +8,53 @@
 
 int main(int argc, char **argv) {
 
-    int        size = 16;
-    lrc_t     *lrc  = &(lrc_t) {0};
-    lrc_buf_t *buf  = &(lrc_buf_t) {0};
+  int        size = 16;
+  lrc_t     *lrc  = &(lrc_t) {0};
+  lrc_buf_t *buf  = &(lrc_buf_t) {0};
 
-    if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 2) != 0) {
-        exit(-1);
+  if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 3) != 0) {
+    exit(-1);
+  }
+
+  if (lrc_buf_init(buf, lrc, size) != 0) {
+    exit(-1);
+  }
+
+  strcpy(buf->data[0], "hello");
+  strcpy(buf->data[1], "world");
+  strcpy(buf->data[2], "lrc");
+  strcpy(buf->data[3], "ec");
+
+  if (lrc_encode(lrc, buf) != 0) {
+    exit(-1);
+  }
+
+  for (int m = 0; m < 3; m++) {
+    printf("code[%d]: ", m);
+    for (int i = 0; i < size; i++) {
+      printf("%02x ", (uint8_t)buf->code[m][i]);
     }
+    printf("\n");
+  }
 
-    if (lrc_buf_init(buf, lrc, size) != 0) {
-        exit(-1);
-    }
+  int8_t erased[2 + 2 + 3] = {1, 0, 0, 0, 0, 0};
 
-    strcpy(buf->data[0], "hello");
-    strcpy(buf->data[1], "world");
-    strcpy(buf->data[2], "lrc");
-    strcpy(buf->data[3], "ec");
+  strcpy(buf->data[0], "*");
 
-    if (lrc_encode(lrc, buf) != 0) {
-        exit(-1);
-    }
+  printf("damaged: %s %s %s %s\n",
+         buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
 
-    int8_t erased[2 + 2 + 3] = {1, 0, 0, 0, 0, 0};
+  if (lrc_decode(lrc, buf, erased) != 0) {
+    exit(-1);
+  }
 
-    strcpy(buf->data[0], "*");
+  printf("reconstructed: %s %s %s %s\n",
+         buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
 
-    printf("data[0] damaged: %s %s %s %s\n",
-           buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+  lrc_destroy(lrc);
+  lrc_buf_destroy(buf);
 
-    if (lrc_decode(lrc, buf, erased) != 0) {
-        exit(-1);
-    }
-
-    printf("data[0] reconstructed: %s %s %s %s\n",
-           buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
-
-    lrc_destroy(lrc);
-    lrc_buf_destroy(buf);
-
-    return 0;
+  return 0;
 }
 
 // vim:sw=2:fdl=0

@@ -14,6 +14,10 @@ int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
     return LRC_INIT_TWICE;
   }
 
+  if (m < n_local) {
+    return LRC_INVALID_M;
+  }
+
   bzero(lrc, sizeof(*lrc));
 
   lrc->n_local = n_local;
@@ -25,7 +29,6 @@ int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
   }
 
   lrc->k = 0;
-  lrc->lrc_m = n_local - 1 + m;
   lrc->m = m;
 
   for (int i = 0; i < n_local; i++) {
@@ -36,7 +39,7 @@ int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
     lrc->k += local_k_arr[i];
   }
 
-  lrc->n = lrc->k + lrc->lrc_m;
+  lrc->n = lrc->k + lrc->m;
 
   /* matrix */
   lrc->matrix = lrc_make_matrix(lrc);
@@ -52,7 +55,7 @@ int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
     goto exit;
   }
 
-  for (int i = 0; i < lrc->lrc_m; i++) {
+  for (int i = 0; i < lrc->m; i++) {
     lrc->code_erased[lrc->k + i] = 1;
   }
 
@@ -175,7 +178,7 @@ int *lrc_make_matrix(lrc_t *lrc) {
    * We have c1.1 ^ c1.2 ^ c.13 = c1
    * Because coefficient of the row 1 in a Vandermonde Matrix are always 1
    *
-   *  k = 6, m = 3, lrc_m = 5
+   *  k = 6, n_local = 3, m = 5
    *
    *  | 1 1 0 0 0 0 |     | d1 |     | c1.1 | |
    *  | 0 0 1 1 0 0 |     | d2 |     | c1.2 | | ^= c1
@@ -189,17 +192,17 @@ int *lrc_make_matrix(lrc_t *lrc) {
   int *matrix = NULL;
   int *lrc_matrix = NULL;
 
-  matrix = reed_sol_vandermonde_coding_matrix(k, m, 8);
+  matrix = reed_sol_vandermonde_coding_matrix(k, m - lrc->n_local + 1, 8);
   if (matrix == NULL) {
     goto exit;
   }
 
-  lrc_matrix = malloc(sizeof(int) * k * lrc->lrc_m);
+  lrc_matrix = malloc(sizeof(int) * k * lrc->m);
   if (lrc_matrix == NULL) {
     goto exit;
   }
 
-  bzero(lrc_matrix, sizeof(int) * k * lrc->lrc_m);
+  bzero(lrc_matrix, sizeof(int) * k * lrc->m);
 
   for (int i = 0; i < lrc->n_local; i++) {
 
@@ -211,9 +214,9 @@ int *lrc_make_matrix(lrc_t *lrc) {
 
   }
 
-  for (int i = 1; i < m; i++) {
+  for (int i = 0; i < m - lrc->n_local; i++) {
     for (int j = 0; j < k; j++) {
-      lrc_matrix[(lrc->n_local - 1 + i)*k + j] = matrix[i * k + j];
+      lrc_matrix[(lrc->n_local + i)*k + j] = matrix[(i + 1) * k + j];
     }
   }
 
@@ -339,7 +342,7 @@ int lrc_buf_init(lrc_buf_t *lb, lrc_t *lrc, int64_t chunk_size) {
   bzero(lb, sizeof(*lb));
 
   lb->n_data = lrc->k;
-  lb->n_code = lrc->lrc_m;
+  lb->n_code = lrc->m;
   lb->n = lb->n_data + lb->n_code;
 
   lb->chunk_size = chunk_size;
@@ -434,7 +437,7 @@ int lrc_decoder_init(lrc_decoder_t *dec, lrc_t *lrc, lrc_buf_t *lb, int8_t *eras
     dec->erased[i] = erased[i];
   }
 
-  dec->decode_matrix = malloc(sizeof(int) * lrc->lrc_m * k);
+  dec->decode_matrix = malloc(sizeof(int) * lrc->m * k);
   if (dec->decode_matrix == NULL) {
     ret = LRC_OUT_OF_MEMORY;
     goto exit;
@@ -457,7 +460,7 @@ int lrc_decoder_init(lrc_decoder_t *dec, lrc_t *lrc, lrc_buf_t *lb, int8_t *eras
 
   dd("\ndecoder inited:");
   lrc_debug_matrix(dec->decode_matrix, to - k, k);
-  lrc_debug_sources(dec->lrc.n, dec->source);
+  lrc_debug_sources(dec->lrc->n, dec->source);
 
 exit:
 
