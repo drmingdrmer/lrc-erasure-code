@@ -15,8 +15,44 @@ chunks, average IO consumption during reconstruction would be reduced to
 `1 / number_of_local_sets`(normally 10% ~ 20%), as storage space would
 increase by about 10%(depends on LRC policy).
 
-**You can also just use this lib as a standard Erasure Code lib too.
-Because LRC-EC is a generalized implementation of Erasure Code.**
+## LRC parameters and the differences from original Erasure Code
+
+For a data set there are 5 chunks in it.
+To create LRC Erasure Code with: 2 local EC codes and 2 global EC codes,
+LRC should be initialized with:
+
+`lrc_init_n(lrc, 2, (uint8_t[]){3, 2}, 4)`
+
+Here in this example, the first local EC code will be created from the 1st 3
+data chunks, and the 2nd local EC code will be created from the last 2 data
+chunks.
+
+4 is the total number of codes:
+*   2 of them are local EC codes, for data[0, 1, 2] and data[3, 4] respectively.
+*   2 additional global EC codes.
+
+The encoding matrix for this LRC parameter is:
+
+```
+1  1  1  0  0
+0  0  0  1  1
+1  2  4  8 16
+1  3  9 27 81
+```
+
+It is identical to original EC `5+3`, except that it split the first row of
+matrix into 2 rows(which makes it possible to use less data/code chunks to reconstruct one).
+The original EC `5+3` encoding matrix is:
+
+```
+1  1  1  1  1
+1  2  4  8 16
+1  3  9 27 81
+```
+
+An original EC of `5+3` like above can be initialized with:
+
+`lrc_init_n(lrc, 1, (uint8_t[]){5}, 3)`
 
 # Synopsis
 
@@ -33,7 +69,7 @@ int main(int argc, char **argv) {
     lrc_t     *lrc  = &(lrc_t) {0};
     lrc_buf_t *buf  = &(lrc_buf_t) {0};
 
-    if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 2) != 0) {
+    if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 3) != 0) {
         exit(-1);
     }
 
@@ -50,19 +86,20 @@ int main(int argc, char **argv) {
         exit(-1);
     }
 
-    int8_t erased[2 + 2 + 3] = {1, 0, 0, 0, 0, 0};
-
     strcpy(buf->data[0], "*");
 
-    printf("data[0] damaged: %s %s %s %s\n",
-           buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+    printf("damaged: %s %s %s %s\n", buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+
+    int8_t erased[2 + 2 + 3] = {
+        1, 0,
+        0, 0,
+        0, 0, 0};
 
     if (lrc_decode(lrc, buf, erased) != 0) {
         exit(-1);
     }
 
-    printf("data[0] reconstructed: %s %s %s %s\n",
-           buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+    printf("reconstructed: %s %s %s %s\n", buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
 
     lrc_destroy(lrc);
     lrc_buf_destroy(buf);
@@ -75,7 +112,8 @@ int main(int argc, char **argv) {
 
 ```shell
 ./configure
-make install
+make
+sudo make install
 ```
 
 # Try it!
@@ -245,6 +283,7 @@ If any `malloc()` fails during initalizing.
 `void lrc_buf_destroy(lrc_buf_t *lrc_buf);`
 
 Free memory allocated by `lrc_buf_init()`.
+It does not free `lrc_buf`.
 
 
 This is a specialized Erasure Code implementation for storage service.
