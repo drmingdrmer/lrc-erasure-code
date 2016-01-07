@@ -21,6 +21,18 @@ chunks, average IO consumption caused by reconstruction would be reduced to
 
 # Install
 
+```shell
+./configure
+make install
+```
+
+# Try it!
+
+```shell
+cd test
+gcc -llrc example.c -o example
+./example
+```
 
 This is a specialized Erasure Code implementation for storage service.
 What matrix to choose does not matter.
