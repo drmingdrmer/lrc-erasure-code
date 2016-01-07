@@ -27,8 +27,6 @@ Because LRC-EC is a generalized implementation of Erasure Code.**
 #include <stdlib.h>
 #include <string.h>
 
-/* gcc -llrc example.c */
-
 int main(int argc, char **argv) {
 
     int        size = 16;
@@ -84,7 +82,7 @@ make install
 
 ```shell
 cd test
-gcc -llrc example.c -o example
+gcc example.c -o example -llrc
 ./example
 ```
 

@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* gcc -llrc example.c */
+/* gcc example.c -llrc */
 
 int main(int argc, char **argv) {
 
+  int k, m, i;
   int        size = 8;
   lrc_t     *lrc  = &(lrc_t) {0};
   lrc_buf_t *buf  = &(lrc_buf_t) {0};
@@ -29,17 +30,17 @@ int main(int argc, char **argv) {
     exit(-1);
   }
 
-  for (int k = 0; k < lrc->k; k++) {
+  for (k = 0; k < lrc->k; k++) {
     printf("data[%d]: ", k);
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
       printf("%02x ", (uint8_t)buf->data[k][i]);
     }
     printf("\n");
   }
 
-  for (int m = 0; m < lrc->m; m++) {
+  for (m = 0; m < lrc->m; m++) {
     printf("code[%d]: ", m);
-    for (int i = 0; i < size; i++) {
+    for (i = 0; i < size; i++) {
       printf("%02x ", (uint8_t)buf->code[m][i]);
     }
     printf("\n");
