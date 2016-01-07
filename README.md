@@ -2,6 +2,13 @@
 
 LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermonde matrix.
 
+# Table of Contents
+
+* auto-gen TOC:
+{:toc}
+
+# Description
+
 Erasure Code Algorithm makes it possible to achieve as high reliability(11 9s)
 as 3-copy replication provides, with highly reduced storage overhead(130% against 300%).
 
