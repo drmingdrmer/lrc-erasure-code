@@ -29,18 +29,21 @@ LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermo
 
 # Description
 
+LRC(Local Reconstruction Codes) Erasure Code supplies almost the same funcionality and reliability as original Erasure Code does.
+And at the same time it reduces reconstruction IO consumption by 50% or more.
+
 Erasure Code Algorithm makes it possible to achieve as high reliability(11 9s)
 as 3-copy replication provides, with highly reduced storage overhead(130% against 300%).
 
 But one of the problems with Erasure Code is the high IO consumption during
 data reconstruction.
 Normally to reconstruct `1` chunk it is required to read `n` chunks.
+
 LRC is a trade-off between storage cost and IO cost.
 
-With several additional `Coding` chunks calculated from subsets of `Data`
-chunks, average IO consumption during reconstruction would be reduced to
-`1 / number_of_local_sets`(normally 10% ~ 20%), as storage space would
-increase by about 10%(depends on LRC policy).
+With several additional **local** `Coding` chunks calculated from subsets of `Data`
+chunks, average IO consumption for reconstruction would be reduced to
+`1 / number_of_local_sets`(normally 10% ~ 50%), at the cost of only about 10%(depends on LRC policy) more space used.
 
 ## LRC parameters and the differences from original Erasure Code
 
