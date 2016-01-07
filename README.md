@@ -4,8 +4,28 @@ LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermo
 
 # Table of Contents
 
-* auto-gen TOC:
-{:toc}
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [LRC-EC](#lrc-ec)
+- [Table of Contents](#table-of-contents)
+- [Description](#description)
+  - [LRC parameters and the differences from original Erasure Code](#lrc-parameters-and-the-differences-from-original-erasure-code)
+- [Synopsis](#synopsis)
+- [Install](#install)
+- [Try it!](#try-it)
+- [API](#api)
+  - [lrc_init_n](#lrc_init_n)
+  - [lrc_destroy](#lrc_destroy)
+  - [lrc_encode](#lrc_encode)
+  - [lrc_decode](#lrc_decode)
+  - [lrc_get_source](#lrc_get_source)
+  - [lrc_buf_init](#lrc_buf_init)
+  - [lrc_buf_destroy](#lrc_buf_destroy)
+- [Analysis](#analysis)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Description
 
