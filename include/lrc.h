@@ -1,3 +1,9 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
+ */
+
 #ifndef LRC_EC_LRC_
 #define LRC_EC_LRC_
 

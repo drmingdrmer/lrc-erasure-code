@@ -1,3 +1,9 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
+ */
+
 #include "lrc.h"
 
 #include <stdint.h>
