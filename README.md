@@ -1,4 +1,4 @@
-# LRC-EC
+# LRC-Erasure-Code
 
 LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermonde matrix.
 
