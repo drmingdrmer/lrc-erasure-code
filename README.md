@@ -2,19 +2,15 @@
 
 LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermonde matrix.
 
-# Table of Contents
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [LRC-EC](#lrc-ec)
-- [Table of Contents](#table-of-contents)
+- [Status](#status)
 - [Description](#description)
   - [LRC parameters and the differences from original Erasure Code](#lrc-parameters-and-the-differences-from-original-erasure-code)
 - [Synopsis](#synopsis)
 - [Install](#install)
-- [Try it!](#try-it)
 - [API](#api)
   - [lrc_init_n](#lrc_init_n)
   - [lrc_destroy](#lrc_destroy)
@@ -24,12 +20,23 @@ LRC(Local Reconstruction Codes) Erasure Code based on Reed-Solomon with Vandermo
   - [lrc_buf_init](#lrc_buf_init)
   - [lrc_buf_destroy](#lrc_buf_destroy)
 - [Analysis](#analysis)
+  - [Reliability](#reliability)
+  - [IO bandwidth](#io-bandwidth)
+- [TODO](#todo)
+- [Author](#author)
+- [Copyright and License](#copyright-and-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# Status
+
+This library is considered production ready.
+
+And it is the core EC implementation in [open.sinastorage.com](http://open.sinastorage.com), which has been protecting dozens of PB user data.
+
 # Description
 
-LRC(Local Reconstruction Codes) Erasure Code supplies almost the same funcionality and reliability as original Erasure Code does.
+LRC(Local Reconstruction Codes) Erasure Code supplies almost the same functionality and reliability as original Erasure Code does.
 And at the same time it reduces reconstruction IO consumption by 50% or more.
 
 Erasure Code Algorithm makes it possible to achieve as high reliability(11 9s)
@@ -47,8 +54,12 @@ chunks, average IO consumption for reconstruction would be reduced to
 
 ## LRC parameters and the differences from original Erasure Code
 
-For a data set there are 5 chunks in it.
-To create LRC Erasure Code with: 2 local EC codes and 2 global EC codes,
+For a collection there are 5 data chunks in it.
+To create LRC Erasure Code with:
+
+*   2 local EC codes;
+*   2 global EC codes;
+
 LRC should be initialized with:
 
 `lrc_init_n(lrc, 2, (uint8_t[]){3, 2}, 4)`
@@ -57,7 +68,7 @@ Here in this example, the first local EC code will be created from the 1st 3
 data chunks, and the 2nd local EC code will be created from the last 2 data
 chunks.
 
-4 is the total number of codes:
+4 is the total number of codes, which includes:
 *   2 of them are local EC codes, for data[0, 1, 2] and data[3, 4] respectively.
 *   2 additional global EC codes.
 
@@ -70,8 +81,8 @@ The encoding matrix for this LRC parameter is:
 1  3  9 27 81
 ```
 
-It is identical to original EC `5+3`, except that it split the first row of
-matrix into 2 rows(which makes it possible to use less data/code chunks to reconstruct one).
+LRC-EC `(2,2)+4` is identical to original EC `5+3`, except that it splits the first row
+into 2 rows(which makes it possible to use less data/code chunks to reconstruct one).
 The original EC `5+3` encoding matrix is:
 
 ```
@@ -80,7 +91,7 @@ The original EC `5+3` encoding matrix is:
 1  3  9 27 81
 ```
 
-An original EC of `5+3` like above can be initialized with:
+If you prefer to use original EC `5+3` like above, `lrc` can be initialized with:
 
 `lrc_init_n(lrc, 1, (uint8_t[]){5}, 3)`
 
@@ -144,11 +155,8 @@ int main(int argc, char **argv) {
 ./configure
 make
 sudo make install
-```
 
-# Try it!
-
-```shell
+# run a test
 cd test
 gcc example.c -o example -llrc
 ./example
@@ -175,7 +183,7 @@ Specify the number of local EC to create.
 An array of length `n_local` of number of data chunks in each local EC.
 
 * `m`
-Specifiy the total number of codes. It must be equal or greater than `n_local`.
+Specifies the total number of codes. It must be equal or greater than `n_local`.
 Thus there are `n_local` local EC codes and `m - n_local + 1` global EC codes.
 Because the first global EC code can be calculated by `local-code-1 ^ local-code-2 ^ ...`
 
@@ -191,7 +199,7 @@ If `lrc` is already initialized.
 If `m` is less than `n_local`.
 
 * `LRC_OUT_OF_MEMORY`
-If any `malloc()` fails during initalizing.
+If any `malloc()` fails during initializing.
 
 ## lrc_destroy
 
@@ -216,7 +224,7 @@ Returns:
 If Success.
 
 * `LRC_OUT_OF_MEMORY`
-If any `malloc()` fails during initalizing.
+If any `malloc()` fails during initializing.
 
 ## lrc_decode
 
@@ -285,7 +293,7 @@ If there is not enough data / code to reconstruct the missing ones.
 `int  lrc_buf_init(lrc_buf_t *lrc_buf, lrc_t *lrc, int64_t chunk_size);`
 
 Allocate memory that will be used during reconstruction,
-which includes: `k+m` byte arrays and a matix for reconstrution.
+which includes: `k+m` byte arrays and a matrix for reconstruction.
 
 Parameters:
 
@@ -306,7 +314,7 @@ If Success.
 If `lrc` is already initialized.
 
 * `LRC_OUT_OF_MEMORY`
-If any `malloc()` fails during initalizing.
+If any `malloc()` fails during initializing.
 
 ## lrc_buf_destroy
 
@@ -323,13 +331,36 @@ but not on finding reversed matrix.
 
 In this implementation Vandermonde matrix is used.
 
-TODO LRC parameters
-
 # Analysis
 
+## Reliability
+
+*   If `k`(number of data chunks) is not very large, reliability of Erasure Code(LRC-EC or EC) with `m` code is similar with n-copy replication with `m+1` copies.
+
+*   LRC-EC can always reconstruct `m - n_local + 1` data loss. In a `(6,6)+4`
+LRC-EC, 3 data loss is always reconstructible.
+
+*   LRC-EC with `m` codes can not always reconstruct `m` data loss.
+In a `(6,6)+4` LRC, there are 1820 different combinations but only 1568 of
+them can be reconstructed(87%).
+
+## IO bandwidth
+
 In calculation, each TB of storage requires
-`k * 0.13G` IO throuhput(both for network and disk drive) each day
+`k * 0.13G` IO throughput(both for network and disk drive) each day
 to reconstruct lost data.
-Wheren `k` is the number of members in a Erasure Code group.
+Where `k` is the number of members in a Erasure Code group.
 
+# TODO
 
+*   Another local code that covers all global codes.
+
+# Author
+
+Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
+
+# Copyright and License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Zhang Yanpo (张炎泼) <drdr.xp@gmail.com>
