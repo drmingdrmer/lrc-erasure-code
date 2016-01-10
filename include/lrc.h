@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-/* #define LRC_DEBUG 1 */
+#define LRC_DEBUG 1
 
 #define LRC_OUT_OF_MEMORY (-1)
 #define LRC_UNRECOVERABLE (-2)
@@ -51,6 +51,9 @@
 #define lrc_init(lrc, k_param, m) \
   lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m))
 
+
+extern int *reed_sol_extended_vandermonde_matrix(int rows, int cols, int w);
+extern int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w);
 
 extern int *reed_sol_vandermonde_coding_matrix(int k, int m, int w);
 extern int jerasure_matrix_decode(int k, int m, int w,
@@ -108,6 +111,8 @@ typedef struct {
   int8_t     inited_;
 
 } lrc_decoder_t;
+
+/* int  lrc_init_n(lrc_t *lrc, int k, int n_local, uint8_t *locals); */
 
 int  lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m);
 void lrc_destroy(lrc_t *lrc);

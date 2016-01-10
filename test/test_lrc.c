@@ -9,11 +9,14 @@
     typeof(a) __a = (a);                                                      \
     typeof(b) __b = (b);                                                      \
     if (__a == __b) {                                                         \
-      dd("OK: %lld == %lld, " fmt,                                            \
-         (long long)__a, (long long)__b, ##__VA_ARGS__);                      \
+      dd("OK: %lld == %lld, " fmt "%s() %s:%d",                               \
+         (long long)__a, (long long)__b,                                      \
+         ##__VA_ARGS__, __func__, __FILE__, __LINE__);                        \
     } else {                                                                  \
-      printf("Failure: expected: %lld, but: %lld " fmt "\n",                  \
-             (long long)__a, (long long)__b, ##__VA_ARGS__);                  \
+      printf("Failure: expected: %lld, but: %lld " fmt "%s() %s:%d" "\n",     \
+             (long long)__a, (long long)__b,                                  \
+             ##__VA_ARGS__, __func__, __FILE__, __LINE__);                    \
+                                                                              \
       exit(1);                                                                \
     }                                                                         \
   } while (0)
@@ -77,6 +80,12 @@ static void _init_test_buf(lrc_t *lrc, lrc_buf_t *lb, int64_t chunk_size) {
   }
 
   eq(0, lrc_encode(lrc, lb), "construct codes");
+}
+
+int test_matrix_() {
+  int *m = reed_sol_big_vandermonde_distribution_matrix(7, 20, 8);
+  lrc_debug_matrix(m, 7, 20);
+  return 0;
 }
 
 # define die_if_err(ret, mes) if (ret != 0) { printf("error "mes": %d\n", ret); exit(1); }
@@ -448,11 +457,12 @@ int bench_12_4() {
 
 int main(int argc, char **argv) {
 
-  test_basic_2_2_2();
-  test_sources_2_2_2();
-  test_12_4();
-  test_lrc_6_6_3();
-  test_lrc_6_6_3_count_all();
+  test_matrix_();
+  /* test_basic_2_2_2(); */
+  /* test_sources_2_2_2(); */
+  /* test_12_4(); */
+  /* test_lrc_6_6_3(); */
+  /* test_lrc_6_6_3_count_all(); */
   /* bench_12_4(); */
 
   return 0;
