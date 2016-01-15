@@ -55,6 +55,28 @@
 
 #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
 
+#   define dd( _fmt, ... )   fprintf( stderr, _fmt "\n", ##__VA_ARGS__)
+#   define dlog( _fmt, ... ) fprintf( stderr, _fmt,      ##__VA_ARGS__)
+
+void debug_matrix_(int *matrix, int row, int col) {
+
+  dd("matrix:");
+
+  for (int i = 0; i < row; i++) {
+
+    for (int j = 0; j < col; j++) {
+
+      int e = matrix[i * col + j];
+      if (e == 0) {
+        dlog(" . ");
+      } else {
+        dlog("%02x ", e);
+      }
+    }
+    dlog("\n");
+  }
+}
+
 int *reed_sol_r6_coding_matrix(int k, int w)
 {
   int *matrix;
@@ -94,6 +116,10 @@ int *reed_sol_vandermonde_coding_matrix(int k, int m, int w)
     i++;
   }
   free(vdm);
+
+  dd("coding matrix");
+  debug_matrix_(dist, m, k);
+
   return dist;
 }
 
@@ -213,6 +239,9 @@ int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w)
   dist = reed_sol_extended_vandermonde_matrix(rows, cols, w);
   if (dist == NULL) return NULL;
 
+  dd("extended vandermonde");
+  debug_matrix_(dist, rows, cols);
+
   sindex = 0;
   for (i = 1; i < cols; i++) {
     sindex += cols;
@@ -269,6 +298,9 @@ int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w)
   /* We desire to have row k be all ones.  To do that, multiply
      the entire column j by 1/dist[k,j].  Then row j by 1/dist[j,j]. */
 
+  dd("extended vandermonde -- 2");
+  debug_matrix_(dist, rows, cols);
+
   sindex = cols*cols;
   for (j = 0; j < cols; j++) {
     tmp = dist[sindex];
@@ -283,6 +315,9 @@ int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w)
     sindex++;
   }
 
+  dd("extended vandermonde -- 3");
+  debug_matrix_(dist, rows, cols);
+
   /* Finally, we'd like the first column of each row to be all ones.  To
      do that, we multiply the row by the inverse of the first element. */
 
@@ -295,6 +330,9 @@ int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w)
     }
     sindex += cols;
   }
+
+  dd("extended vandermonde -- 4");
+  debug_matrix_(dist, rows, cols);
 
   return dist;
 }
