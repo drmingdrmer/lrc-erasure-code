@@ -13,7 +13,8 @@ int main(int argc, char **argv) {
   lrc_t     *lrc  = &(lrc_t) {0};
   lrc_buf_t *buf  = &(lrc_buf_t) {0};
 
-  if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 3) != 0) {
+  /* if (lrc_init_n(lrc, 2, (uint8_t[]) {4, 4}, 5) != 0) { */
+  if (lrc_init_n(lrc, 1, (uint8_t[]) {3}, 2) != 0) {
     exit(-1);
   }
 

@@ -217,6 +217,9 @@ int *reed_sol_extended_vandermonde_matrix(int rows, int cols, int w)
   for (j = 0; j < cols-1; j++) vdm[i+j] = 0;
   vdm[i+j] = 1;
   if (rows == 2) return vdm;
+  
+  dd("extended 1:");
+  debug_matrix_(vdm, rows, cols);
 
   for (i = 1; i < rows-1; i++) {
     k = 1;
