@@ -30,3 +30,8 @@
 
 # Debug files
 *.dSYM/
+
+# eclipse
+/.autotools
+/.cproject
+/.project
