@@ -67,7 +67,7 @@ static void _check_reconstructed(lrc_buf_t *lb, char *saved, int8_t *erased) {
   }
 }
 
-static void _init_test_buf(lrc_t *lrc, lrc_buf_t *lb, int64_t chunk_size) {
+static void _init_test_buf(lrc_param_t *lrc, lrc_buf_t *lb, int64_t chunk_size) {
 
   int ret = 0;
 
@@ -79,7 +79,7 @@ static void _init_test_buf(lrc_t *lrc, lrc_buf_t *lb, int64_t chunk_size) {
     memset(b, i + 1, chunk_size);
   }
 
-  eq(0, lrc_encode(lrc, lb), "construct codes");
+  eq(0, lrc_param_encode(lrc, lb), "construct codes");
 }
 
 int test_matrix_() {
@@ -94,7 +94,7 @@ int test_basic_2_2_2() {
 
   int        ret      = 0;
   int        chunk_size = 16;
-  lrc_t     *lrc      = &(lrc_t) {0};
+  lrc_param_t     *lrc      = &(lrc_param_t) {0};
   lrc_buf_t *buf_enc  = &(lrc_buf_t) {0};
 
   /*
@@ -109,7 +109,7 @@ int test_basic_2_2_2() {
    * we do not save c1.
    */
 
-  ret = lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 2);
+  ret = lrc_param_init_n(lrc, 2, (uint8_t[]) {2, 2}, 2);
   die_if_err(ret, "init lrc");
 
   /* -- construct code from data -- */
@@ -122,7 +122,7 @@ int test_basic_2_2_2() {
   strcpy(buf_enc->data[2], "lrc");
   strcpy(buf_enc->data[3], "ec");
 
-  ret = lrc_encode(lrc, buf_enc);
+  ret = lrc_param_encode(lrc, buf_enc);
   die_if_err(ret, "encoding");
 
   /* -- erase data[0] and reconstruct -- */
@@ -140,7 +140,7 @@ int test_basic_2_2_2() {
   /* find out which data/code are required by reconstruction */
   int8_t sources[2 + 2 + 3] = {0};
 
-  ret = lrc_get_source(lrc, erased, sources);
+  ret = lrc_param_get_source(lrc, erased, sources);
   die_if_err(ret, "get reconstruction source");
 
   /* prepare data for reconstruction */
@@ -152,13 +152,13 @@ int test_basic_2_2_2() {
 
   printf("data[0] damaged: %s\n", buf_dec->data[0]);
 
-  ret = lrc_decode(lrc, buf_dec, erased);
+  ret = lrc_param_decode(lrc, buf_dec, erased);
   die_if_err(ret, "decode");
 
   printf("data[0] reconstructed: %s\n", buf_dec->data[0]);
 
   /* free memory allocated */
-  lrc_destroy(lrc);
+  lrc_param_destroy(lrc);
   lrc_buf_destroy(buf_enc);
   lrc_buf_destroy(buf_dec);
 
@@ -170,10 +170,10 @@ int test_basic_2_2_2() {
 
 int test_sources_2_2_2() {
 
-  lrc_t *lrc = &(lrc_t) {0};
+  lrc_param_t *lrc = &(lrc_param_t) {0};
   int   ret = 0;
 
-  ret = lrc_init(lrc, k(2, 2), 3);
+  ret = lrc_param_init(lrc, k(2, 2), 3);
   eq(0, ret, "lrc_init");
   eq(3, lrc->m, "m");
   eq(7, lrc->n, "n");
@@ -196,7 +196,7 @@ int test_sources_2_2_2() {
 
     int8_t src[7] = {0};
 
-    ret = lrc_get_source(lrc, c.erased, src);
+    ret = lrc_param_get_source(lrc, c.erased, src);
     eq(c.r, ret, "ret");
 
     if (ret == 0) {
@@ -206,19 +206,19 @@ int test_sources_2_2_2() {
     }
   }
 
-  lrc_destroy(lrc);
+  lrc_param_destroy(lrc);
   return 0;
 }
 
 int test_12_4() {
 
-  lrc_t lrc = {0};
+  lrc_param_t lrc = {0};
   lrc_buf_t *lb = &(lrc_buf_t) {0};
   int8_t erased[512] = {0};
   char saved[512];
   int ret = 0;
 
-  ret = lrc_init(&lrc, k(12), 4);
+  ret = lrc_param_init(&lrc, k(12), 4);
   eq(0, ret, "lrc_init");
 
   _init_test_buf(&lrc, lb, 1);
@@ -240,7 +240,7 @@ int test_12_4() {
 
           _corrupt(lb, saved, erased);
 
-          ret = lrc_decode(&lrc, lb, erased);
+          ret = lrc_param_decode(&lrc, lb, erased);
           eq(0, ret, "reconstruct, %d, %d, %d, %d", a, b, c, d);
 
           lrc_debug_buf_line(lb, 0);
@@ -252,18 +252,18 @@ int test_12_4() {
   }
 
   lrc_buf_destroy(lb);
-  lrc_destroy(&lrc);
+  lrc_param_destroy(&lrc);
   return 0;
 }
 
 int test_lrc_6_6_3() {
 
-  lrc_t     *lrc = &(lrc_t) {0};
+  lrc_param_t     *lrc = &(lrc_param_t) {0};
   lrc_buf_t *lb  = &(lrc_buf_t) {0};
   int        ret = 0;
   char       saved[512];
 
-  ret = lrc_init(lrc, k(6, 6), 4);
+  ret = lrc_param_init(lrc, k(6, 6), 4);
   eq(4, lrc->m, "m");
   eq(16, lrc->n, "n");
   eq(0, ret, "lrc_init");
@@ -296,7 +296,7 @@ int test_lrc_6_6_3() {
     int8_t *erased = _to_erased(c.erasures);
     int8_t  source[512] = {0};
 
-    ret = lrc_get_source(lrc, erased, source);
+    ret = lrc_param_get_source(lrc, erased, source);
     eq(c.r, ret, "get reconstruction source");
     if (ret != 0) {
       continue;
@@ -314,7 +314,7 @@ int test_lrc_6_6_3() {
     dd("data required to reconstruct:");
     lrc_debug_buf_line(lb, 0);
 
-    ret = lrc_decode(lrc, lb, erased);
+    ret = lrc_param_decode(lrc, lb, erased);
 
     dd("reconstructed:");
     lrc_debug_buf_line(lb, 0);
@@ -329,13 +329,13 @@ int test_lrc_6_6_3() {
   }
 
   lrc_buf_destroy(lb);
-  lrc_destroy(lrc);
+  lrc_param_destroy(lrc);
   return 0;
 }
 
 int test_lrc_6_6_3_count_all() {
 
-  lrc_t lrc = {0};
+  lrc_param_t lrc = {0};
   lrc_buf_t *lb = &(lrc_buf_t) {0};
   int8_t erased[512] = {0};
   char saved[512];
@@ -343,7 +343,7 @@ int test_lrc_6_6_3_count_all() {
   int n_reconsruct = 0;
   int n_ok = 0;
 
-  ret = lrc_init(&lrc, k(6, 6), 4);
+  ret = lrc_param_init(&lrc, k(6, 6), 4);
   eq(12, lrc.k, "k");
   eq(4, lrc.m, "m");
   eq(16, lrc.n, "n");
@@ -371,7 +371,7 @@ int test_lrc_6_6_3_count_all() {
           _corrupt(lb, saved, erased);
 
           n_reconsruct ++;
-          ret = lrc_decode(&lrc, lb, erased);
+          ret = lrc_param_decode(&lrc, lb, erased);
 
           lrc_debug_buf_line(lb, 0);
 
@@ -392,13 +392,13 @@ int test_lrc_6_6_3_count_all() {
   eq(1568, n_ok, "nr ok");
 
   lrc_buf_destroy(lb);
-  lrc_destroy(&lrc);
+  lrc_param_destroy(&lrc);
   return 0;
 }
 
 int bench_12_4() {
 
-  lrc_t lrc = {0};
+  lrc_param_t lrc = {0};
   lrc_buf_t *lb = &(lrc_buf_t) {0};
 
   int8_t erased[512] = {0};
@@ -406,7 +406,7 @@ int bench_12_4() {
   int64_t chunk_size = 1024 * 1024;
   int ret = 0;
 
-  ret = lrc_init(&lrc, k(12), 4);
+  ret = lrc_param_init(&lrc, k(12), 4);
   eq(0, ret, "lrc_init");
 
   _init_test_buf(&lrc, lb, chunk_size);
@@ -426,7 +426,7 @@ int bench_12_4() {
   gettimeofday(&t0, NULL);
 
   for (int64_t i = 0; i < n; i++) {
-    ret = lrc_decode(&lrc, lb, erased);
+    ret = lrc_param_decode(&lrc, lb, erased);
     eq(0, ret, "reconstruct, 1234");
   }
 
@@ -451,7 +451,7 @@ int bench_12_4() {
         );
 
   lrc_buf_destroy(lb);
-  lrc_destroy(&lrc);
+  lrc_param_destroy(&lrc);
   return 0;
 }
 

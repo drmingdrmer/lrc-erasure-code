@@ -12,7 +12,79 @@
 #include <string.h>
 #include <unistd.h>
 
-int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
+
+int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m, int64_t chunk_size) {
+
+  int ret = -1;
+
+  if (lrc->inited_ == 1) {
+    return LRC_INIT_TWICE;
+  }
+
+  ret = lrc_param_init_n(&lrc->lrc_param, n_local, local_k_arr, m);
+  if (ret != 0) {
+    goto exit;
+  }
+
+  ret = lrc_buf_init(&lrc->lrc_buf, &lrc->lrc_param, chunk_size);
+  if (ret != 0) {
+    goto exit;
+  }
+
+  lrc->k = lrc->lrc_param.k;
+  lrc->m = lrc->lrc_param.m;
+  lrc->n = lrc->lrc_param.n;
+
+  lrc->inited_ = 1;
+
+exit:
+
+  if (ret != 0) {
+    lrc_param_destroy(&lrc->lrc_param);
+    lrc_buf_destroy(&lrc->lrc_buf);
+  }
+
+  return ret;
+}
+
+
+void lrc_destroy(lrc_t *lrc) {
+
+  if (lrc->inited_ == 0) {
+    return;
+  }
+
+  lrc_param_destroy(&lrc->lrc_param);
+  lrc_buf_destroy(&lrc->lrc_buf);
+}
+
+
+int lrc_encode(lrc_t *lrc) {
+  return lrc_decode(lrc, lrc->lrc_param.code_erased);
+}
+
+
+int lrc_decode(lrc_t *lrc, int8_t *erased) {
+
+  int ret = 0;
+  lrc_decoder_t *dec = &(lrc_decoder_t) {0};
+
+  ret = lrc_decoder_init(dec, &lrc->lrc_param, &lrc->lrc_buf, erased);
+  if (ret != 0) {
+    goto exit;
+  }
+
+  ret = lrc_decoder_decode(dec);
+
+exit:
+
+  lrc_decoder_destroy(dec);
+
+  return ret;
+}
+
+
+int lrc_param_init_n(lrc_param_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
 
   int ret = 0;
 
@@ -48,7 +120,7 @@ int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m) {
   lrc->n = lrc->k + lrc->m;
 
   /* matrix */
-  lrc->matrix = lrc_make_matrix(lrc);
+  lrc->matrix = lrc_param_make_matrix(lrc);
   if (lrc->matrix == NULL) {
     ret = LRC_OUT_OF_MEMORY;
     goto exit;
@@ -78,7 +150,8 @@ exit:
   return ret;
 }
 
-void lrc_destroy(lrc_t *lrc) {
+
+void lrc_param_destroy(lrc_param_t *lrc) {
 
   if (lrc->inited_ == 0) {
     return;
@@ -91,11 +164,13 @@ void lrc_destroy(lrc_t *lrc) {
   bzero(lrc, sizeof(*lrc));
 }
 
-int lrc_encode(lrc_t *lrc, lrc_buf_t *lb) {
-  return lrc_decode(lrc, lb, lrc->code_erased);
+
+int lrc_param_encode(lrc_param_t *lrc, lrc_buf_t *lb) {
+  return lrc_param_decode(lrc, lb, lrc->code_erased);
 }
 
-int lrc_decode(lrc_t *lrc, lrc_buf_t *lb, int8_t *erased) {
+
+int lrc_param_decode(lrc_param_t *lrc, lrc_buf_t *lb, int8_t *erased) {
 
   int ret = 0;
   lrc_decoder_t *dec = &(lrc_decoder_t) {0};
@@ -114,7 +189,8 @@ exit:
   return ret;
 }
 
-int lrc_get_source(lrc_t *lrc, int8_t *erased, int8_t *source) {
+
+int lrc_param_get_source(lrc_param_t *lrc, int8_t *erased, int8_t *source) {
 
   /* we need at least as many equations as erased chunks  */
 
@@ -123,7 +199,7 @@ int lrc_get_source(lrc_t *lrc, int8_t *erased, int8_t *source) {
 
   for (int i = 0; i < lrc->n_local; i++) {
 
-    int n = lrc_get_n_locally_erased(lrc, i, erased);
+    int n = lrc_param_get_n_locally_erased(lrc, i, erased);
     if (n == 0) {
       continue;
     }
@@ -173,7 +249,8 @@ exit:
   return ret;
 }
 
-int *lrc_make_matrix(lrc_t *lrc) {
+
+int *lrc_param_make_matrix(lrc_param_t *lrc) {
   /*
    * LRC Erasure Code:
    *  d0 d1   d2 d3   d4 d5
@@ -231,7 +308,8 @@ exit:
   return lrc_matrix;
 }
 
-int lrc_get_n_locally_erased(lrc_t *lrc, int idx_local, int8_t *erased) {
+
+int lrc_param_get_n_locally_erased(lrc_param_t *lrc, int idx_local, int8_t *erased) {
 
   int start = lrc->locals[idx_local].start;
   int end = start + lrc->locals[idx_local].len;
@@ -251,6 +329,7 @@ int lrc_get_n_locally_erased(lrc_t *lrc, int idx_local, int8_t *erased) {
   return n_damaged;
 }
 
+
 int lrc_count_erased(int n, int8_t *erased) {
 
   int en = 0;
@@ -263,6 +342,7 @@ int lrc_count_erased(int n, int8_t *erased) {
 
   return en;
 }
+
 
 void lrc_debug_buf_line_(lrc_buf_t *lb, int n) {
 
@@ -298,6 +378,7 @@ void lrc_debug_buf_line_(lrc_buf_t *lb, int n) {
   dlog("\n");
 }
 
+
 void lrc_debug_matrix_(int *matrix, int row, int col) {
 
   dd("matrix:");
@@ -317,6 +398,7 @@ void lrc_debug_matrix_(int *matrix, int row, int col) {
   }
 }
 
+
 void lrc_debug_sources_(int n, int8_t *source) {
 
   dd("source:");
@@ -335,9 +417,10 @@ void lrc_debug_sources_(int n, int8_t *source) {
   dlog("\n");
 }
 
+
 /* lrc_buf_t */
 
-int lrc_buf_init(lrc_buf_t *lb, lrc_t *lrc, int64_t chunk_size) {
+int lrc_buf_init(lrc_buf_t *lb, lrc_param_t *lrc, int64_t chunk_size) {
 
   int ret = 0;
 
@@ -378,6 +461,7 @@ exit:
   return ret;
 }
 
+
 void lrc_buf_destroy(lrc_buf_t *lb) {
 
   if (lb == NULL || lb->inited_ == 0) {
@@ -391,6 +475,7 @@ void lrc_buf_destroy(lrc_buf_t *lb) {
   bzero(lb, sizeof(*lb));
 }
 
+
 int lrc_buf_shadow(lrc_buf_t *lb, lrc_buf_t *src) {
   *lb = *src;
   lb->code = &lb->data[lb->n_data];
@@ -398,9 +483,10 @@ int lrc_buf_shadow(lrc_buf_t *lb, lrc_buf_t *src) {
   return 0;
 }
 
+
 /* lrc decoder */
 
-int lrc_decoder_init(lrc_decoder_t *dec, lrc_t *lrc, lrc_buf_t *lb, int8_t *erased) {
+int lrc_decoder_init(lrc_decoder_t *dec, lrc_param_t *lrc, lrc_buf_t *lb, int8_t *erased) {
 
   /*
    * To a certain pattern of data loss, a specific matrix specific is required
@@ -433,7 +519,7 @@ int lrc_decoder_init(lrc_decoder_t *dec, lrc_t *lrc, lrc_buf_t *lb, int8_t *eras
     goto exit;
   }
 
-  ret = lrc_get_source(lrc, erased, dec->source);
+  ret = lrc_param_get_source(lrc, erased, dec->source);
   if (ret != 0) {
     goto exit;
   }
@@ -477,6 +563,7 @@ exit:
   return ret;
 }
 
+
 void lrc_decoder_destroy(lrc_decoder_t *dec) {
 
   if (dec == NULL || dec->inited_ == 0) {
@@ -487,6 +574,7 @@ void lrc_decoder_destroy(lrc_decoder_t *dec) {
 
   bzero(dec, sizeof(*dec));
 }
+
 
 int lrc_decoder_decode(lrc_decoder_t *dec) {
 

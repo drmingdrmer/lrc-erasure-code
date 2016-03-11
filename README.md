@@ -104,48 +104,60 @@ If you prefer to use original EC `5+3` like above, `lrc` can be initialized with
 #include <stdlib.h>
 #include <string.h>
 
+int chunk_size = 16;
+
+void print_chunk(char **chunks, int n, char *type) {
+
+  int i, j;
+  for (i = 0; i < n; i++) {
+    printf("%s[%d]: ", type, i);
+    for (j = 0; j < chunk_size; j++) {
+      printf("%02x ", (uint8_t)chunks[i][j]);
+    }
+    printf("\n");
+  }
+}
+
 int main(int argc, char **argv) {
 
-    int        size = 16;
-    lrc_t     *lrc  = &(lrc_t) {0};
-    lrc_buf_t *buf  = &(lrc_buf_t) {0};
+  lrc_t *lrc = &(lrc_t)lrc_null;
 
-    if (lrc_init_n(lrc, 2, (uint8_t[]) {2, 2}, 3) != 0) {
-        exit(-1);
-    }
+  if (lrc_init(lrc, k(2, 2), 3, chunk_size) != 0) {
+    exit(-1);
+  }
 
-    if (lrc_buf_init(buf, lrc, size) != 0) {
-        exit(-1);
-    }
+  char **datas = lrc->lrc_buf.data;
+  char **codes = lrc->lrc_buf.code;
 
-    strcpy(buf->data[0], "hello");
-    strcpy(buf->data[1], "world");
-    strcpy(buf->data[2], "lrc");
-    strcpy(buf->data[3], "ec");
+  strcpy(datas[0], "hello");
+  strcpy(datas[1], "world");
+  strcpy(datas[2], "lrc");
+  strcpy(datas[3], "ec");
 
-    if (lrc_encode(lrc, buf) != 0) {
-        exit(-1);
-    }
+  if (lrc_encode(lrc) != 0) {
+    exit(-1);
+  }
 
-    strcpy(buf->data[0], "*");
+  print_chunk(datas, lrc->k, "data");
+  print_chunk(codes, lrc->m, "code");
 
-    printf("damaged: %s %s %s %s\n", buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+  strcpy(datas[0], "*");
+  printf("damaged: %s %s %s %s\n", datas[0], datas[1], datas[2], datas[3]);
 
-    int8_t erased[2 + 2 + 3] = {
-        1, 0,
-        0, 0,
-        0, 0, 0};
+  int8_t erased[2 + 2 + 3] = {
+    1, 0,
+    0, 0,
+    0, 0, 0
+  };
 
-    if (lrc_decode(lrc, buf, erased) != 0) {
-        exit(-1);
-    }
+  if (lrc_decode(lrc, erased) != 0) {
+    exit(-1);
+  }
 
-    printf("reconstructed: %s %s %s %s\n", buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+  printf("reconstructed: %s %s %s %s\n", datas[0], datas[1], datas[2], datas[3]);
 
-    lrc_destroy(lrc);
-    lrc_buf_destroy(buf);
-
-    return 0;
+  lrc_destroy(lrc);
+  return 0;
 }
 ```
 
