@@ -46,12 +46,25 @@ int main(int argc, char **argv) {
     printf("\n");
   }
 
-  int8_t erased[2 + 2 + 3] = {1, 0, 0, 0, 0, 0};
+  int8_t erased[2 + 2 + 3] = {1, 0, 0, 0, 0, 0, 0};
 
   strcpy(buf->data[0], "*");
 
   printf("damaged: %s %s %s %s\n",
          buf->data[0], buf->data[1], buf->data[2], buf->data[3]);
+
+  int8_t source[2 + 2 + 3] = {0};
+  lrc_get_source(lrc, erased, source);
+
+  printf("data / code required to reconstruct: ");
+  for (k = 0; k < 7; k++) {
+    printf("%d ", source[k]);
+  }
+  printf("\n");
+
+  /* data[2], data[3] does not participate into reconstruction. */
+  strcpy(buf->data[2], "LRC");
+  strcpy(buf->data[3], "EC");
 
   if (lrc_decode(lrc, buf, erased) != 0) {
     exit(-1);
