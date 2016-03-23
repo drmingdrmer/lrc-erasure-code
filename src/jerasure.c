@@ -95,8 +95,8 @@ void jerasure_print_bitmatrix(int *m, int rows, int cols, int w)
   }
 }
 
-int jerasure_make_decoding_matrix(int k, int m, int w, int *matrix, int *erased, int *decoding_matrix, int *dm_ids)
-{
+int jerasure_make_decoding_matrix(int k, int m, int w, int *matrix, int *erased, int *decoding_matrix, int *dm_ids) {
+
   int i, j, *tmpmat;
 
   j = 0;
@@ -108,12 +108,23 @@ int jerasure_make_decoding_matrix(int k, int m, int w, int *matrix, int *erased,
   }
 
   tmpmat = talloc(int, k*k);
-  if (tmpmat == NULL) { return -1; }
+
+  if (tmpmat == NULL) {
+      return -1;
+  }
+
   for (i = 0; i < k; i++) {
+
     if (dm_ids[i] < k) {
-      for (j = 0; j < k; j++) tmpmat[i*k+j] = 0;
+
+      for (j = 0; j < k; j++) {
+          tmpmat[i*k+j] = 0;
+      }
+
       tmpmat[i*k+dm_ids[i]] = 1;
+
     } else {
+
       for (j = 0; j < k; j++) {
         tmpmat[i*k+j] = matrix[(dm_ids[i]-k)*k+j];
       }

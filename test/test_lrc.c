@@ -83,8 +83,10 @@ static void _init_test_buf(lrc_param_t *lrc, lrc_buf_t *lb, int64_t chunk_size) 
 }
 
 int test_matrix_() {
-  int *m = reed_sol_big_vandermonde_distribution_matrix(7, 20, 8);
-  lrc_debug_matrix(m, 7, 20);
+  /*
+   * int *m = lrc_big_vandermonde_distribution_matrix(7, 20);
+   * lrc_debug_matrix(m, 7, 20);
+   */
   return 0;
 }
 

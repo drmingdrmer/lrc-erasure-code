@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
   strcpy(datas[0], "*");
   printf("damaged: %s %s %s %s\n", datas[0], datas[1], datas[2], datas[3]);
 
-  int8_t erased[2 + 2 + 3] = {
+  int erased[2 + 2 + 3] = {
     1, 0,
     0, 0,
     0, 0, 0

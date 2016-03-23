@@ -54,10 +54,11 @@
 #define lrc_init(lrc, k_param, m, size) \
   lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m), (size))
 
-extern int *reed_sol_extended_vandermonde_matrix(int rows, int cols, int w);
-extern int *reed_sol_big_vandermonde_distribution_matrix(int rows, int cols, int w);
+void lrc_init_vandermonde_matrix(int *matrix, int rows, int cols);
 
-extern int *reed_sol_vandermonde_coding_matrix(int k, int m, int w);
+extern void jerasure_matrix_dotprod(int k, int w, int *matrix_row,
+                          int *src_ids, int dest_id,
+                          char **data_ptrs, char **coding_ptrs, int size);
 extern int jerasure_matrix_decode(int k, int m, int w,
                                   int *matrix, int row_k_ones, int *erasures,
                                   char **data_ptrs, char **coding_ptrs, int size);
@@ -97,7 +98,7 @@ typedef struct {
   lrc_local_t *locals;        /* start index and nr of elts of each local EC */
 
   int         *matrix;        /* ecoding matrix m *k                         */
-  int8_t      *code_erased;   /* for encode                                  */
+  int         *code_erased;   /* for encode                                  */
 
   int8_t       inited_;
 
@@ -109,8 +110,8 @@ typedef struct {
   lrc_param_t     *lrc;
   lrc_buf_t  buf;
 
-  int8_t     erased[512];     /* array of index of erased data/code                        */
-  int8_t     source[512];     /* data/code indexes those are required to reconstruct       */
+  int        erased[512];     /* array of index of erased data/code                        */
+  int        source[512];     /* data/code indexes those are required to reconstruct       */
   int       *decode_matrix;   /* matrix with damaged data-row/unnecessary code-row removed */
 
   int8_t     inited_;
@@ -146,29 +147,33 @@ typedef struct {
 int lrc_init_n(lrc_t *lrc, int n_local, uint8_t *local_k_arr, int m, int64_t chunk_size);
 void lrc_destroy(lrc_t *lrc);
 int lrc_encode(lrc_t *lrc);
-int lrc_decode(lrc_t *lrc, int8_t *erased);
+int lrc_decode(lrc_t *lrc, int *erased);
 
 int  lrc_param_init_n(lrc_param_t *lrc_param, int n_local, uint8_t *local_k_arr, int m);
 void lrc_param_destroy(lrc_param_t *lrc_param);
 int  lrc_param_encode(lrc_param_t *lrc_param, lrc_buf_t *lb);
-int  lrc_param_decode(lrc_param_t *lrc_param, lrc_buf_t *lb, int8_t *erased);
-int  lrc_param_get_source(lrc_param_t *lrc_param, int8_t *erased, int8_t *source);
+int  lrc_param_decode(lrc_param_t *lrc_param, lrc_buf_t *lb, int *erased);
+int  lrc_param_get_source(lrc_param_t *lrc_param, int *erased, int *source);
 
 int *lrc_param_make_matrix(lrc_param_t *lrc_param);
-int  lrc_param_get_n_locally_erased(lrc_param_t *lrc_param, int idx_local, int8_t *erased);
-int  lrc_count_erased(int n, int8_t *erased);
+int  lrc_param_get_n_locally_erased(lrc_param_t *lrc_param, int idx_local, int *erased);
+int  lrc_count_erased(int n, int *erased);
 
 void lrc_debug_buf_line_(lrc_buf_t *lb, int n);
 void lrc_debug_matrix_(int *matrix, int row, int col);
-void lrc_debug_sources_(int n, int8_t *source);
+void lrc_debug_sources_(int n, int *source);
 
 int  lrc_buf_init(lrc_buf_t *lb, lrc_param_t *lrc, int64_t chunk_size);
 void lrc_buf_destroy(lrc_buf_t *lb);
 int  lrc_buf_shadow(lrc_buf_t *lb, lrc_buf_t *src);
 
-int  lrc_decoder_init(lrc_decoder_t *dec, lrc_param_t *lrc, lrc_buf_t *lb, int8_t *erased);
+int  lrc_decoder_init(lrc_decoder_t *dec, lrc_param_t *lrc, lrc_buf_t *lb, int *erased);
 void lrc_decoder_destroy(lrc_decoder_t *dec);
 int  lrc_decoder_decode(lrc_decoder_t *dec);
+
+int lrc_gf_mul(int x, int y);
+int lrc_gf_div(int x, int y);
+int lrc_gf_power(int x);
 
 #endif /* LRC_EC_LRC_ */
 // vim:sw=2:fdl=1
