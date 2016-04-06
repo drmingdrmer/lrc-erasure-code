@@ -32,6 +32,13 @@
 
 #define lrc_align_16(val) (((val - 1) / 16 + 1) * 16)
 
+#define lrc_swap(a, b)                                                        \
+  do {                                                                        \
+    typeof(a) t = (a);                                                        \
+    (a) = (b);                                                                \
+    (b) = t;                                                                  \
+  } while (0)
+
 #define _lrc_concat(a, b) a ## b
 
 #define _lrc_n_arr_k(...) (sizeof((uint8_t[]){__VA_ARGS__}) / sizeof(uint8_t)), \
@@ -55,13 +62,13 @@
   lrc_init_n((lrc), _lrc_concat(_lrc_n_arr_, k_param), (m), (size))
 
 void lrc_init_vandermonde_matrix(int *matrix, int rows, int cols);
+int lrc_matrix_decode(int k, int m, int *matrix, int *erased, char **data_ptrs, char **coding_ptrs, int size);
+int lrc_make_decoding_matrix(int k, int m, int *matrix, int *erased, int *decoding_matrix, int *valid_indexes);
+int lrc_invert_matrix(int *mat, int *inv, int rows);
 
 extern void jerasure_matrix_dotprod(int k, int w, int *matrix_row,
                           int *src_ids, int dest_id,
                           char **data_ptrs, char **coding_ptrs, int size);
-extern int jerasure_matrix_decode(int k, int m, int w,
-                                  int *matrix, int row_k_ones, int *erasures,
-                                  char **data_ptrs, char **coding_ptrs, int size);
 
 typedef struct {
   uint8_t start;

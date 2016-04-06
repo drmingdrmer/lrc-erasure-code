@@ -12,10 +12,6 @@
 #include <string.h>
 #include <unistd.h>
 
-int lrc_matrix_decode(int k, int m, int *matrix, int *erased, char **data_ptrs, char **coding_ptrs, int size);
-int lrc_make_decoding_matrix(int k, int m, int *matrix, int *erased,
-                                  int *decoding_matrix, int *valid_indexes);
-int lrc_invert_matrix(int *mat, int *inv, int rows);
 
 int gf_256_power_table[256] = {
   0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1d, 0x3a, 0x74, 0xe8, 0xcd, 0x87, 0x13, 0x26,
@@ -748,13 +744,6 @@ void lrc_init_vandermonde_matrix(int *matrix, int rows, int cols) {
   dd("init vandermonde:");
   lrc_debug_matrix(matrix, rows, cols);
 }
-
-#define lrc_swap(a, b) \
-  do { \
-    typeof(a) t = (a); \
-    (a) = (b); \
-    (b) = t; \
-  } while (0)
 
 int lrc_invert_matrix(int *mat, int *inv, int rows) {
 
