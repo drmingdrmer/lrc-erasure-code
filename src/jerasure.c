@@ -53,6 +53,27 @@
 
 #define talloc(type, num) (type *) malloc(sizeof(type)*(num))
 
+#   define dd( _fmt, ... )   fprintf( stderr, _fmt "\n", ##__VA_ARGS__)
+#   define dlog( _fmt, ... ) fprintf( stderr, _fmt,      ##__VA_ARGS__)
+void lrc_debug_m(int *matrix, int row, int col) {
+
+  dd("matrix:");
+
+  for (int i = 0; i < row; i++) {
+
+    for (int j = 0; j < col; j++) {
+
+      int e = matrix[i * col + j];
+      if (e == 0) {
+        dlog(" . ");
+      } else {
+        dlog("%02x ", e);
+      }
+    }
+    dlog("\n");
+  }
+}
+
 static double jerasure_total_xor_bytes = 0;
 static double jerasure_total_gf_bytes = 0;
 static double jerasure_total_memcpy_bytes = 0;
@@ -119,6 +140,8 @@ int jerasure_make_decoding_matrix(int k, int m, int w, int *matrix, int *erased,
       }
     }
   }
+
+  lrc_debug_m(tmpmat, k, k);
 
   i = jerasure_invert_matrix(tmpmat, decoding_matrix, k, w);
   free(tmpmat);
@@ -387,6 +410,9 @@ int jerasure_invert_matrix(int *mat, int *inv, int rows, int w)
 
   /* First -- convert into upper triangular  */
   for (i = 0; i < cols; i++) {
+
+    lrc_debug_m(mat, rows, rows);
+
     row_start = cols*i;
 
     /* Swap rows if we ave a zero i,i element.  If we can't swap, then the 
@@ -438,6 +464,8 @@ int jerasure_invert_matrix(int *mat, int *inv, int rows, int w)
       }
     }
   }
+
+  lrc_debug_m(mat, rows, rows);
 
   /* Now the matrix is upper triangular.  Start at the top and multiply down  */
 

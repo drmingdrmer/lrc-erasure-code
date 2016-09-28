@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 
-/* #define LRC_DEBUG 1 */
+#define LRC_DEBUG 1
 
 #define LRC_OUT_OF_MEMORY (-1)
 #define LRC_UNRECOVERABLE (-2)
